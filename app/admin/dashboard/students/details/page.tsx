@@ -1,20 +1,53 @@
 import { InputField } from "@/app/components/Inputfield";
 import OptionField from "@/app/components/OptionField";
 import { PrimaryButton } from "@/app/components/PrimaryButton";
+import TableField from "@/app/components/TableField";
 
 export default function StudentData() {
   const teacherList = ["shivam", "krishna", "adi"];
   const subjectList = ["java", "typescript", "c"];
   const studentGrade = [
     {
-      subject: "maths",
-      grade: "80%",
+      Subject: "Mathematics",
+      Grade: "A",
+    },
+    {
+      Subject: "English",
+      Grade: "B+",
+    },
+    {
+      Subject: "Science",
+      Grade: "A-",
+    },
+    {
+      Subject: "History",
+      Grade: "B",
+    },
+    {
+      Subject: "Art",
+      Grade: "A+",
     },
   ];
   const studentTiming = [
     {
-      date: "28/10/2024",
-      time: "18:00(GTM)",
+      DateChosen: "2024-09-01",
+      TimeChosen: "10:30 AM",
+    },
+    {
+      DateChosen: "2024-09-02",
+      TimeChosen: "02:15 PM",
+    },
+    {
+      DateChosen: "2024-09-03",
+      TimeChosen: "08:45 AM",
+    },
+    {
+      DateChosen: "2024-09-04",
+      TimeChosen: "05:00 PM",
+    },
+    {
+      DateChosen: "2024-09-05",
+      TimeChosen: "11:00 AM",
     },
   ];
 
@@ -60,40 +93,10 @@ export default function StudentData() {
         <div className=" border-2 border-borderColor w-1/2 rounded-lg p-5 m-5">
           <h1 className="text-xl font-bold">Preffered Timing By Student</h1>
 
-          <div className="relative flex flex-col w-full h-[90%] overflow-y-scroll text-gray-700 bg-white shadow-md rounded-xl bg-clip-border">
-            <table className="w-full text-left table-auto min-w-max overflow-hidden">
-              <thead>
-                <tr>
-                  <th className="p-4 border-b border-blue-gray-100 bg-blue-gray-50">
-                    <p className="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
-                      Date Choosen
-                    </p>
-                  </th>
-                  <th className="p-4 border-b border-blue-gray-100 bg-blue-gray-50">
-                    <p className="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
-                      Time Choosen
-                    </p>
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {studentTiming.map((info, index) => (
-                  <tr key={index}>
-                    <td className="p-4 border-b border-blue-gray-50">
-                      <p className="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
-                        {info.date}
-                      </p>
-                    </td>
-                    <td className="p-4 border-b border-blue-gray-50">
-                      <p className="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
-                        {info.time}
-                      </p>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+          <TableField
+            rows={studentTiming}
+            className="h-[320px] overflow-x-hidden my-5"
+          ></TableField>
         </div>
       </div>
 
@@ -119,40 +122,7 @@ export default function StudentData() {
 
       <div className=" border-2 border-borderColor rounded-lg p-5 m-5">
         <h1 className="text-xl font-bold">Subject and Grade</h1>
-        <div className="relative flex flex-col w-full   text-gray-700 bg-white shadow-md rounded-xl bg-clip-border">
-          <table className="w-full text-left table-auto min-w-max overflow-hidden">
-            <thead>
-              <tr>
-                <th className="p-4 border-b border-blue-gray-100 bg-blue-gray-50">
-                  <p className="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
-                    Subject Choosen By Student
-                  </p>
-                </th>
-                <th className="p-4 border-b border-blue-gray-100 bg-blue-gray-50">
-                  <p className="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
-                    Grade
-                  </p>
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {studentGrade.map((info, index) => (
-                <tr key={index}>
-                  <td className="p-4 border-b border-blue-gray-50">
-                    <p className="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
-                      {info.subject}
-                    </p>
-                  </td>
-                  <td className="p-4 border-b border-blue-gray-50">
-                    <p className="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
-                      {info.grade}
-                    </p>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+        <TableField rows={studentGrade} className="my-5"></TableField>
       </div>
     </div>
   );
