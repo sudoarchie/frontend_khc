@@ -1,14 +1,20 @@
-export default function OptionField() {
+interface option {
+  Label: string;
+  Option: string[];
+  className?: string;
+}
+export default function OptionField({ Label, Option, className }: option) {
   return (
-    <div className="w-full max-w-sm min-w-[200px]">
-      <label className="block mb-1 text-sm text-slate-800">Input Number</label>
+    <div className={`w-full ${className}`}>
+      <label className="block mb-1 text-sm text-slate-800">{Label}</label>
 
       <div className="relative">
         <select className="w-full h-10 bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-400 shadow-sm focus:shadow-md appearance-none cursor-pointer">
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
+          {Option.map((info, index) => (
+            <option value={info} key={index}>
+              {info}
+            </option>
+          ))}
         </select>
         <svg
           xmlns="http://www.w3.org/2000/svg"

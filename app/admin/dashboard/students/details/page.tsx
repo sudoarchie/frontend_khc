@@ -1,8 +1,23 @@
 import { InputField } from "@/app/components/Inputfield";
+import OptionField from "@/app/components/OptionField";
 import { PrimaryButton } from "@/app/components/PrimaryButton";
 
 export default function StudentData() {
   const teacherList = ["shivam", "krishna", "adi"];
+  const subjectList = ["java", "typescript", "c"];
+  const studentGrade = [
+    {
+      subject: "maths",
+      grade: "80%",
+    },
+  ];
+  const studentTiming = [
+    {
+      date: "28/10/2024",
+      time: "18:00(GTM)",
+    },
+  ];
+
   return (
     <div className="w-full">
       <div className="flex ">
@@ -44,7 +59,8 @@ export default function StudentData() {
         </div>
         <div className=" border-2 border-borderColor w-1/2 rounded-lg p-5 m-5">
           <h1 className="text-xl font-bold">Preffered Timing By Student</h1>
-          <div className="relative flex flex-col w-full  overflow-scroll text-gray-700 bg-white shadow-md rounded-xl bg-clip-border">
+
+          <div className="relative flex flex-col w-full h-[90%] overflow-y-scroll text-gray-700 bg-white shadow-md rounded-xl bg-clip-border">
             <table className="w-full text-left table-auto min-w-max overflow-hidden">
               <thead>
                 <tr>
@@ -61,18 +77,20 @@ export default function StudentData() {
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td className="p-4 border-b border-blue-gray-50">
-                    <p className="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
-                      27/07/2024
-                    </p>
-                  </td>
-                  <td className="p-4 border-b border-blue-gray-50">
-                    <p className="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
-                      13:00(GMT)
-                    </p>
-                  </td>
-                </tr>
+                {studentTiming.map((info, index) => (
+                  <tr key={index}>
+                    <td className="p-4 border-b border-blue-gray-50">
+                      <p className="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                        {info.date}
+                      </p>
+                    </td>
+                    <td className="p-4 border-b border-blue-gray-50">
+                      <p className="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                        {info.time}
+                      </p>
+                    </td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>
@@ -81,7 +99,60 @@ export default function StudentData() {
 
       <div className=" border-2 border-borderColor rounded-lg p-5 m-5">
         <h1 className="text-xl font-bold">Assign a Teacher</h1>
-        <div></div>
+        <div className="flex flex-col">
+          <OptionField
+            Label={"Teacher Name"}
+            Option={teacherList}
+            className="mt-5 max-w-[700px] m-auto"
+          ></OptionField>
+          <OptionField
+            Label={"Subject Name"}
+            Option={subjectList}
+            className="mt-5 max-w-[700px] m-auto"
+          ></OptionField>
+          <PrimaryButton
+            Name={"Assign Teacher now"}
+            className="mt-5 md:w-[700px] max-w-[700px] m-auto"
+          ></PrimaryButton>
+        </div>
+      </div>
+
+      <div className=" border-2 border-borderColor rounded-lg p-5 m-5">
+        <h1 className="text-xl font-bold">Subject and Grade</h1>
+        <div className="relative flex flex-col w-full   text-gray-700 bg-white shadow-md rounded-xl bg-clip-border">
+          <table className="w-full text-left table-auto min-w-max overflow-hidden">
+            <thead>
+              <tr>
+                <th className="p-4 border-b border-blue-gray-100 bg-blue-gray-50">
+                  <p className="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
+                    Subject Choosen By Student
+                  </p>
+                </th>
+                <th className="p-4 border-b border-blue-gray-100 bg-blue-gray-50">
+                  <p className="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
+                    Grade
+                  </p>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {studentGrade.map((info, index) => (
+                <tr key={index}>
+                  <td className="p-4 border-b border-blue-gray-50">
+                    <p className="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                      {info.subject}
+                    </p>
+                  </td>
+                  <td className="p-4 border-b border-blue-gray-50">
+                    <p className="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                      {info.grade}
+                    </p>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );
