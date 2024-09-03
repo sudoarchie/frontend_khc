@@ -1,3 +1,6 @@
+import React from "react";
+import Link from "next/link";
+
 interface RowData {
   [key: string]: string;
 }
@@ -7,23 +10,32 @@ interface TableData {
   className?: string;
 }
 
-export default function TableField({ rows, className }: TableData) {
+const TableField: React.FC<TableData> = ({ rows, className = "" }) => {
   if (rows.length === 0) {
     return null;
   }
 
   const headers = Object.keys(rows[0]);
 
+  const isValidUrl = (url: string) => {
+    try {
+      new URL(url);
+      return true;
+    } catch {
+      return false;
+    }
+  };
+
   return (
     <div
-      className={`relative flex flex-col w-full h-full overflow-scroll text-slate-300 bg-slate-800 shadow-md rounded-lg bg-clip-border ${className}`}
+      className={`relative flex flex-col w-full h-full overflow-auto text-slate-300 bg-slate-800 shadow-md rounded-lg bg-clip-border ${className}`}
     >
       <table className="w-full text-left table-auto min-w-max">
         <thead>
           <tr>
-            {headers.map((header, index) => (
+            {headers.map((header) => (
               <th
-                key={index}
+                key={header}
                 className="p-4 border-b border-slate-600 bg-slate-700"
               >
                 <p className="text-sm font-normal leading-none text-slate-300">
@@ -36,10 +48,23 @@ export default function TableField({ rows, className }: TableData) {
         <tbody>
           {rows.map((row, rowIndex) => (
             <tr className="even:bg-slate-900 hover:bg-slate-700" key={rowIndex}>
-              {headers.map((header, cellIndex) => (
-                <td key={cellIndex} className="p-4 border-b border-slate-700">
+              {headers.map((header) => (
+                <td
+                  key={`${rowIndex}-${header}`}
+                  className="p-4 border-b border-slate-700"
+                >
                   <p className="text-sm text-slate-100 font-semibold">
-                    {row[header]}
+                    {isValidUrl(row[header]) ? (
+                      <Link
+                        href={row[header]}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Open Link
+                      </Link>
+                    ) : (
+                      row[header]
+                    )}
                   </p>
                 </td>
               ))}
@@ -49,4 +74,6 @@ export default function TableField({ rows, className }: TableData) {
       </table>
     </div>
   );
-}
+};
+
+export default TableField;
