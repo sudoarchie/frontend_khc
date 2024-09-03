@@ -50,7 +50,7 @@ export default function Teacher() {
   ];
   return (
     <div>
-      <TableField rows={data}></TableField>
+      <TableField rows={data} className="mt-5"></TableField>
     </div>
   );
 }
