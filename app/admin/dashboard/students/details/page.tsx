@@ -1,3 +1,4 @@
+import { Box } from "@/app/components/Box";
 import { InputField } from "@/app/components/Inputfield";
 import OptionField from "@/app/components/OptionField";
 import { PrimaryButton } from "@/app/components/PrimaryButton";
@@ -54,9 +55,8 @@ export default function StudentData() {
   return (
     <div className="w-full">
       <div className="flex ">
-        <div className=" border-2 border-borderColor w-1/2 rounded-lg p-5 m-5">
-          <h1 className="text-xl font-bold">Profile Details</h1>
-          <div className="flex flex-col">
+        <Box Heading="Profile Details" className=" w-1/2">
+          <div className="flex flex-col mt-5">
             <InputField
               label={"Student Name"}
               placeholder={""}
@@ -89,19 +89,17 @@ export default function StudentData() {
             ></InputField>
             <PrimaryButton Name={"Save"} className="mt-5"></PrimaryButton>
           </div>
-        </div>
-        <div className=" border-2 border-borderColor w-1/2 rounded-lg p-5 m-5">
-          <h1 className="text-xl font-bold">Preffered Timing By Student</h1>
+        </Box>
 
+        <Box Heading="Preffered Timing By Student" className="w-1/2">
           <TableField
             rows={studentTiming}
-            className="h-[320px] overflow-x-hidden my-5"
+            className="h-[310px] w-full overflow-x-hidden my-5"
           ></TableField>
-        </div>
+        </Box>
       </div>
 
-      <div className=" border-2 border-borderColor rounded-lg p-5 m-5">
-        <h1 className="text-xl font-bold">Assign a Teacher</h1>
+      <Box Heading="Assign a Teacher">
         <div className="flex flex-col">
           <OptionField
             Label={"Teacher Name"}
@@ -118,12 +116,12 @@ export default function StudentData() {
             className="mt-5 md:w-[700px] max-w-[700px] m-auto"
           ></PrimaryButton>
         </div>
-      </div>
+      </Box>
 
-      <div className=" border-2 border-borderColor rounded-lg p-5 m-5">
-        <h1 className="text-xl font-bold">Subject and Grade</h1>
+      <Box Heading="Subject and Grade">
+        {/* <h1 className="text-xl font-bold">Subject and Grade</h1> */}
         <TableField rows={studentGrade} className="my-5"></TableField>
-      </div>
+      </Box>
     </div>
   );
 }
