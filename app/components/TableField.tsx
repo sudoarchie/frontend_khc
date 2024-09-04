@@ -8,9 +8,14 @@ interface RowData {
 interface TableData {
   rows: RowData[];
   className?: string;
+  deleteOption?: boolean;
 }
 
-const TableField: React.FC<TableData> = ({ rows, className = "" }) => {
+const TableField: React.FC<TableData> = ({
+  rows,
+  deleteOption,
+  className = "",
+}) => {
   if (rows.length === 0) {
     return null;
   }
@@ -43,6 +48,13 @@ const TableField: React.FC<TableData> = ({ rows, className = "" }) => {
                 </p>
               </th>
             ))}
+            {deleteOption ? (
+              <th className="p-4 border-b border-slate-600 bg-slate-700">
+                <p className="text-sm font-normal leading-none text-slate-300">
+                  Delete
+                </p>
+              </th>
+            ) : undefined}
           </tr>
         </thead>
         <tbody>
@@ -68,6 +80,15 @@ const TableField: React.FC<TableData> = ({ rows, className = "" }) => {
                   </p>
                 </td>
               ))}
+              {deleteOption ? (
+                <td className="p-4">
+                  {" "}
+                  <Link href={""} className="">
+                    {" "}
+                    Delete
+                  </Link>{" "}
+                </td>
+              ) : undefined}
             </tr>
           ))}
         </tbody>
