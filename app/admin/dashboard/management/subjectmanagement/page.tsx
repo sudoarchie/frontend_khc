@@ -17,9 +17,9 @@ export default function SubjectManagement() {
   return (
     <div className="flex flex-col w-[95%] m-5 mx-auto">
       <Box
-        Heading="Add Category"
-        SubHeading="Choose category and enter category name"
-        className="w-full px-10"
+        Heading="Add Subject"
+        SubHeading="Add Category and name of subject"
+        className="w-full "
       >
         <OptionField
           Label={"Choose Category"}
@@ -40,7 +40,7 @@ export default function SubjectManagement() {
       <TableField
         rows={data}
         deleteOption={true}
-        className="w-full"
+        className="w-full ml-5"
       ></TableField>
     </div>
   );
