@@ -5,14 +5,15 @@ import { MultiSelect } from "react-multi-select-component";
 interface MultiOption {
   label: string;
   option: Options[];
+  values?: Options[];
 }
 interface Options {
   label: string;
   value: string;
 }
 
-export function MultiOptionSelect({ label, option }: MultiOption) {
-  const [selected, setSelected] = useState([]);
+export function MultiOptionSelect({ label, option, values }: MultiOption) {
+  const [selected, setSelected] = useState(values || []);
 
   return (
     <div>
