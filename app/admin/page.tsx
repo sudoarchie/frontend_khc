@@ -1,4 +1,6 @@
+"use client";
 import Image from "next/image";
+import { useForm, SubmitHandler } from "react-hook-form";
 
 import graphicsLogin from "@/public/8ff238e5b5acb1cf34f2dd1e1e2bcbea.png";
 import Link from "next/link";
@@ -6,6 +8,18 @@ import { NavbarSec } from "@/app/components/NavbarSecoundary";
 import { Button, TextField } from "@mui/material";
 
 export default function Page() {
+  type Inputs = {
+    email: string;
+    password: string;
+  };
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm<Inputs>();
+  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
+
   return (
     <div className="max-w-screen-xl mx-auto">
       <NavbarSec></NavbarSec>
@@ -30,7 +44,7 @@ export default function Page() {
                 Get started
               </Link>
             </div>
-            <div className="mt-20">
+            <form onSubmit={handleSubmit(onSubmit)} className="mt-20">
               <TextField
                 id="outlined-basic"
                 variant="outlined"
@@ -38,6 +52,7 @@ export default function Page() {
                 placeholder="admin@gmail.com"
                 className="w-full sm:w-[80%] mx-auto sm:mx-0"
                 type="text"
+                {...register("email", { required: true })}
               ></TextField>
               <TextField
                 label="Password"
@@ -46,14 +61,16 @@ export default function Page() {
                 className="w-full sm:w-[80%] mt-10 mx-auto sm:mx-0"
                 placeholder={"8+ characters"}
                 type="password"
+                {...register("password", { required: true })}
               ></TextField>
               <Button
                 variant="contained"
                 className="w-full sm:w-[80%] mt-10 mx-auto sm:mx-0 bg-primary"
+                type="submit"
               >
                 SIGN IN
               </Button>
-            </div>
+            </form>
           </div>
         </div>
       </div>
