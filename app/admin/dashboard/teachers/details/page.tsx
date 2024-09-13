@@ -1,3 +1,21 @@
+"use client";
+import { useForm, SubmitHandler } from "react-hook-form";
+
+type Inputs = {
+  teacherName: string;
+  nameOne: string;
+  nameTwo: string;
+  nameThree: string;
+  email: string;
+  country: string;
+  MobileNumber: number;
+  joinedDate: Date;
+  bankName: string;
+  branch: string;
+  accountNumber: string;
+  ifsccode: string;
+  paypalemail: string;
+};
 import { Box } from "@/app/components/Box";
 import { InputField } from "@/app/components/Inputfield";
 import Image from "next/image";
@@ -7,6 +25,13 @@ import TableField from "@/app/components/TableField";
 import { PrimaryButton } from "@/app/components/PrimaryButton";
 
 export default function TeacherDetails() {
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm<Inputs>();
+  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
   const data = {
     imagelink: dp,
     teacherName: "shivam singh",
@@ -88,7 +113,7 @@ export default function TeacherDetails() {
     },
   ];
   return (
-    <div>
+    <form onSubmit={handleSubmit(onSubmit)}>
       <Box Heading="Profile Details">
         <div className="flex flex-col justify-center items-center">
           <Image
@@ -99,58 +124,66 @@ export default function TeacherDetails() {
           <InputField
             label={"Teacher Name"}
             placeholder={""}
-            value={data.teacherName}
-            type={""}
+            defaultValue={data.teacherName}
+            type={"text"}
             className="mt-5 w-[70%]"
+            {...register("teacherName", { required: true })}
           ></InputField>
           <InputField
             label={"Name one"}
             placeholder={""}
-            value={data.NameOne}
+            defaultValue={data.NameOne}
             type={""}
+            {...register("nameOne", { required: true })}
             className="mt-5 w-[70%]"
           ></InputField>
           <InputField
             label={"Name two"}
             placeholder={""}
-            value={data.NameTwo}
+            defaultValue={data.NameTwo}
             type={""}
             className="mt-5 w-[70%]"
+            {...register("nameTwo", { required: true })}
           ></InputField>
           <InputField
-            label={"Teacher three"}
+            label={"Name three"}
             placeholder={""}
-            value={data.NameThree}
+            defaultValue={data.NameThree}
             type={""}
+            {...register("nameThree", { required: true })}
             className="mt-5 w-[70%]"
           ></InputField>
           <InputField
             label={"Email Address"}
             placeholder={""}
-            value={data.Email}
+            defaultValue={data.Email}
             type={"email"}
+            {...register("email", { required: true })}
             className="mt-5 w-[70%]"
           ></InputField>
           <InputField
-            label={"Conuntry"}
+            label={"Country"}
             placeholder={""}
-            value={data.Country}
+            defaultValue={data.Country}
             type={"text"}
             className="mt-5 w-[70%]"
+            {...register("country", { required: true })}
           ></InputField>
           <InputField
             label={"Phone Number"}
             placeholder={""}
-            value={data.Phone}
-            type={"email"}
+            defaultValue={data.Phone}
+            type={"number"}
             className="mt-5 w-[70%]"
+            {...register("MobileNumber", { required: true })}
           ></InputField>
           <InputField
             label={"Joined In"}
             placeholder={""}
-            value={data.JoinedIn}
-            type={"email"}
+            defaultValue={data.JoinedIn}
+            type={"date"}
             className="mt-5 w-[70%]"
+            {...register("joinedDate", { required: true })}
           ></InputField>
         </div>
       </Box>
@@ -178,44 +211,50 @@ export default function TeacherDetails() {
           <InputField
             label={"Bank Name"}
             placeholder={""}
-            value={bankData.bankName}
+            defaultValue={bankData.bankName}
             className="w-[70%] mt-5 mx-auto"
             type={""}
+            {...register("bankName", { required: true })}
           ></InputField>
           <InputField
             label={"Branch"}
             placeholder={""}
-            value={bankData.branch}
+            defaultValue={bankData.branch}
             className="w-[70%] mt-5 mx-auto"
             type={"text"}
+            {...register("branch", { required: true })}
           ></InputField>
           <InputField
             label={"Account Number "}
             placeholder={""}
-            value={bankData.accountNumber}
+            defaultValue={bankData.accountNumber}
             className="w-[70%] mt-5 mx-auto"
             type={"text"}
+            {...register("accountNumber", { required: true })}
           ></InputField>
           <InputField
             label={"IFSC Code"}
             placeholder={""}
-            value={bankData.ifscCode}
+            defaultValue={bankData.ifscCode}
             className="w-[70%] mt-5 mx-auto"
             type={"text"}
+            {...register("ifsccode", { required: true })}
           ></InputField>
           <InputField
             label={"Paypal Email"}
             placeholder={""}
-            value={bankData.paypalEmail}
+            defaultValue={bankData.paypalEmail}
             className="w-[70%] mt-5 mx-auto"
             type={"text"}
+            {...register("paypalemail", { required: true })}
           ></InputField>
         </div>
       </Box>
       <PrimaryButton
         Name={"Update"}
         className="w-[70%] m-auto my-5"
+        type="submit"
       ></PrimaryButton>
-    </div>
+    </form>
   );
 }

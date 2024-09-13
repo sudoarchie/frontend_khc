@@ -1,3 +1,5 @@
+"use client ";
+import { useForm, SubmitHandler } from "react-hook-form";
 import { Box } from "@/app/components/Box";
 import { InputField } from "@/app/components/Inputfield";
 import { PrimaryButton } from "@/app/components/PrimaryButton";
