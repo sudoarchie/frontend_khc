@@ -1,3 +1,5 @@
+"use client";
+import { useForm } from "react-hook-form";
 import Mail from "@/app/components/Mail";
 
 export default function Inbox() {
@@ -38,9 +40,22 @@ export default function Inbox() {
       useremail: "chen.wei@example.cn",
     },
   ];
+
+  const { register, handleSubmit, reset } = useForm();
+
+  const onSubmit = (formData: any) => {
+    console.log("Reply Submitted:", formData);
+    reset(); // Reset the form after submission
+  };
+
   return (
     <div className="m-5 w-full">
-      <Mail className="w-full" data={data}></Mail>
+      <Mail
+        className="w-full"
+        data={data}
+        onSubmit={handleSubmit(onSubmit)}
+        register={register}
+      ></Mail>
     </div>
   );
 }
