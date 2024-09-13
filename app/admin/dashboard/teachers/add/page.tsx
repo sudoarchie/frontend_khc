@@ -5,6 +5,13 @@ import { InputField } from "@/app/components/Inputfield";
 import { PrimaryButton } from "@/app/components/PrimaryButton";
 import { UploadField } from "@/app/components/UploadField";
 
+type Inputs = {
+  fullName: string;
+  phoneNo: number;
+  email: string;
+  password: string;
+};
+
 export default function AddTecher() {
   return (
     <div>
