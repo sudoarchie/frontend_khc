@@ -141,7 +141,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-
       <div className="mt-10 w-[70%] mx-auto">
         <h1 className="text-4xl font-extrabold text-center my-5">
           Learning The Art of Learning
@@ -291,6 +290,20 @@ export default function Home() {
             concentrated and the body fit.
           </li>
         </ul>
+      </div>
+      <div className="bg-primary text-white p-10 w-[70%] h-[200px] mx-auto flex flex-col justify-center items-center rounded-xl">
+        <h2 className="text-3xl font-bold mb-5 ">Ready to join our course</h2>
+        <div className="flex flex-wrap justify-center items-center">
+          Get in touch: hello@xyz.com | Or apply for our course{" "}
+          <SecoundaryButton
+            Name={"Join Now"}
+            className="mx-5"
+          ></SecoundaryButton>
+        </div>
+      </div>
+      <div className="flex h-[700px] relative top-[-100px] -z-10">
+        <div className="w-1/2 bg-[#272F41] rounded-r-xl"></div>
+        <div className="w-1/2"></div>
       </div>
     </div>
   );
