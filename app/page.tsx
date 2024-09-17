@@ -8,6 +8,7 @@ import img5 from "@/public/download3.png";
 import img6 from "@/public/download4.png";
 import img7 from "@/public/download5.png";
 import img8 from "@/public/Vector.png";
+import img9 from "@/public/download (1).png";
 
 import { Poppins } from "next/font/google";
 import { SecoundaryButton } from "./components/SecoundaryButton";
@@ -302,8 +303,50 @@ export default function Home() {
         </div>
       </div>
       <div className="flex h-[700px] relative top-[-100px] -z-10">
-        <div className="w-1/2 bg-[#272F41] rounded-r-xl"></div>
-        <div className="w-1/2"></div>
+        <div className="w-1/2 bg-[#272F41] text-white rounded-r-xl flex flex-col justify-center items-center gap-5">
+          <h1 className="text-4xl font-bold ">Start journey in 3 steps</h1>
+          <div className="w-[400px] h-[100px] rounded-lg p-5 flex  items-center gap-5 border-2 ">
+            <div className="rounded-full bg-primary h-[30px] w-[30px] flex justify-center items-center">
+              1
+            </div>
+            <div className="text-2xl font-bold"> Enquire</div>
+          </div>
+          <div className="w-[400px] h-[100px] rounded-lg p-5 flex  items-center gap-5 border-2 ">
+            <div className="rounded-full bg-primary h-[30px] w-[30px] flex justify-center items-center">
+              2
+            </div>
+            <div className="text-2xl font-bold"> Take a free trial</div>
+          </div>
+          <div className="w-[400px] h-[100px] rounded-lg p-5 flex  items-center gap-5 border-2 ">
+            <div className="rounded-full bg-primary h-[30px] w-[30px] flex justify-center items-center">
+              3
+            </div>
+            <div className="text-2xl font-bold">
+              Start your learning journey
+            </div>
+          </div>
+        </div>
+        <div className="w-1/2 flex flex-col justify-center items-baseline bg-[#ffebde]">
+          <Image
+            src={img9}
+            alt={"Enquire"}
+            className="h-[500px] aspect-square object-contain"
+          ></Image>
+          <div className="flex flex-col mx-auto justify-center items-center">
+            <h1 className="text-4xl font-bold text-center">Inquire</h1>
+            <div className="text-center text-gray-600">
+              Enroll in Our Courses with KHC Online Education
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="mt-10">
+        <h1 className="text-4xl font-bold text-center">Our Popular Courses</h1>
+        <h2 className="text-gray-600 text-center">
+          Choose your Curriculum, Grade & subjects required for tutoring to get
+          free trial
+        </h2>
+        <div className="mt-5"></div>
       </div>
     </div>
   );
