@@ -44,6 +44,7 @@ export default function List() {
       {data.map((info, index) => (
         <CardTwo
           title={info.title}
+          key={index}
           url={info.url}
           image={info.image}
           discription={info.description}

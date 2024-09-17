@@ -14,11 +14,45 @@ import { Poppins } from "next/font/google";
 import { SecoundaryButton } from "./components/SecoundaryButton";
 import { PrimaryButton } from "./components/PrimaryButton";
 import { CardFour } from "./components/Cardfour";
-// import { Bold } from "lucide-react";
+import { CardTwo } from "./components/cardTwo";
 const poppins = Poppins({
   subsets: ["latin"],
   weight: "800",
 });
+
+const curriculum = [
+  {
+    title: "CBSE",
+    description:
+      "The Central Board of Secondary Education is a national-level board of education in India for public and private schools.",
+    url: "https://www.cbse.gov.in",
+  },
+  {
+    title: "IGCSE",
+    description:
+      "The International General Certificate of Secondary Education is an English language-based examination similar to GCSE.",
+    url: "https://www.cambridgeinternational.org/programmes-and-qualifications/cambridge-igcse/",
+  },
+  {
+    title: "Cambridge International",
+    description:
+      "Cambridge Assessment International Education prepares school students for life, helping them develop an informed curiosity and a lasting passion for learning.",
+    url: "https://www.cambridgeinternational.org",
+  },
+  {
+    title: "ICSE",
+    description:
+      "The Indian Certificate of Secondary Education is an examination conducted by the Council for the Indian School Certificate Examinations.",
+    url: "https://www.cisce.org",
+  },
+  {
+    title: "IB",
+    description:
+      "The International Baccalaureate is an international educational foundation offering four educational programmes for children aged 3–19.",
+    url: "https://www.ibo.org",
+  },
+];
+
 export default function Home() {
   return (
     <div>
@@ -57,8 +91,8 @@ export default function Home() {
           </h1>
           <ul className="list-disc mt-5 ml-5 text-gray-600">
             <li className="mt-2">
-              KHC Tuition is customized as per individual student's grasping
-              power.
+              KHC Tuition is customized as per individual student&apos;s
+              grasping power.
             </li>
             <li className="mt-2">
               Personalized Attention for young Geniuses of Primary to A-Level.
@@ -223,7 +257,7 @@ export default function Home() {
               </svg>
             </div>
             Our One-to-One Online Sessions provide personal attention as per the
-            child's level of understanding - uplifting him/her every day.
+            child&apos;s level of understanding - uplifting him/her every day.
           </li>
           <li className="flex items-center mb-6 gap-5">
             <div>
@@ -346,7 +380,16 @@ export default function Home() {
           Choose your Curriculum, Grade & subjects required for tutoring to get
           free trial
         </h2>
-        <div className="mt-5"></div>
+        <div className="mt-5 flex flex-wrap gap-5 w-[90%] mx-auto justify-center">
+          {curriculum.map((info, index) => (
+            <CardTwo
+              title={info.title}
+              discription={info.description}
+              url={info.url}
+              key={index}
+            ></CardTwo>
+          ))}
+        </div>
       </div>
     </div>
   );
