@@ -9,12 +9,15 @@ import img6 from "@/public/download4.png";
 import img7 from "@/public/download5.png";
 import img8 from "@/public/Vector.png";
 import img9 from "@/public/download (1).png";
-
+import img10 from "@/public/dog-sit-cartoon-golden-retriever-cute-pet_81894-10138.jpg";
 import { Poppins } from "next/font/google";
 import { SecoundaryButton } from "./components/SecoundaryButton";
 import { PrimaryButton } from "./components/PrimaryButton";
 import { CardFour } from "./components/Cardfour";
 import { CardTwo } from "./components/cardTwo";
+import { Box } from "./components/Box";
+import { InputField } from "./components/Inputfield";
+import { Faq } from "./components/faq";
 const poppins = Poppins({
   subsets: ["latin"],
   weight: "800",
@@ -53,6 +56,40 @@ const curriculum = [
   },
 ];
 
+const faqData = {
+  data: [
+    {
+      title: "What do KHC tuition courses include?",
+      discription: `Clear Concept building
+        Strong Foundation
+        Regular & Extensive Practice
+        Exam-Style/Keyword Focusing
+        More extensive for IGCSE & AS/A-Level
+        Regular Test
+        Regular Doubt Discussion
+        Regular update about the sessions`,
+    },
+    {
+      title: "Will there be tuition homework?",
+      discription: `Homework is important
+        Given after each lesson
+        Homework submission before the next lesson is compulsory
+        Homework Shortcomings & learning gaps are discussed (worked) in the beginning of the next lesson
+        For students who need less homework, separate discussion with the parents is done to ultimately bring the outcome effectively`,
+    },
+    {
+      title: "How frequent is the test?",
+      discription: `In general, monthly once per subject
+        Depends on the grade of the student & how frequently are the lessons planned weekly`,
+    },
+    {
+      title: "How many lessons per week?",
+      discription: `Twice weekly per subject is advisable
+        Can be fixed once, twice, thrice, or even daily based on the student’s requirement
+        Customizable as one-to-one & 100% personalized`,
+    },
+  ],
+};
 export default function Home() {
   return (
     <div>
@@ -390,6 +427,43 @@ export default function Home() {
             ></CardTwo>
           ))}
         </div>
+      </div>
+      <div className="mt-10">
+        <h1 className="text-4xl font-bold text-center">
+          Post your tutoring requirement here
+        </h1>
+        <Box className="w-[800px] mx-auto flex flex-col gap-5">
+          <InputField label={"Email"}></InputField>
+          <InputField label={"Phone Number"}></InputField>
+          <InputField label={"Message"}></InputField>
+          <PrimaryButton Name={"Quick Enquiry"}></PrimaryButton>
+        </Box>
+      </div>
+      <div className="flex">
+        <div className="flex flex-col justify-center items-center mx-auto mt-5 w-1/2 ">
+          <h1 className="text-4xl font-bold ">Got questions?</h1>
+          <h3 className="text-gray-700 ">
+            Have a look through our frequently asked questions
+          </h3>
+          <Image src={img10} alt={""}></Image>
+        </div>
+        <div className="w-1/2">
+          <Faq data={faqData.data}></Faq>
+        </div>
+      </div>
+
+      <div className="w-[70%] h-[200px] mx-auto rounded-xl bg-secondary text-white flex flex-col justify-center items-center mt-10">
+        <h2 className="text-4xl font-bold">
+          Get ready to build your future with us.
+        </h2>
+        <div className="mt-5 flex gap-5 justify-center items-center">
+          Get in touch: email@gmail.com | Or post your tutoring requiment here
+          <PrimaryButton Name={"Quick Enquiry"}></PrimaryButton>
+        </div>
+      </div>
+      <div>
+        <div className="text-center mt-10 font-bold text-4xl">Latest Blogs</div>
+        <div className="flex flex-wrap"></div>
       </div>
     </div>
   );
