@@ -10,6 +10,7 @@ import {
 } from "@tanstack/react-query";
 import { Provider } from "@/utils/Provider";
 import { Footer } from "./components/Footer";
+import { Navbar } from "./components/Navbar";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -25,6 +26,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
+        <Navbar></Navbar>
         <Provider>{children}</Provider>
         <Footer></Footer>
       </body>

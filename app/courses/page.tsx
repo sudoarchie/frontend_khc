@@ -46,14 +46,13 @@ export default function Courses() {
       <h1 className="text-2xl font-bold text-center mt-5">Our Courses</h1>
       <div className="m-5 flex flex-wrap gap-5">
         {data.map((info, index) => (
-          <BackgroundGradient key={index}>
-            <CardThree
-              title={info.title}
-              discription={info.description}
-              image={info.image}
-              url={info.url}
-            ></CardThree>
-          </BackgroundGradient>
+          <CardThree
+            title={info.title}
+            discription={info.description}
+            image={info.image}
+            url={info.url}
+            key={index}
+          ></CardThree>
         ))}
       </div>
     </div>

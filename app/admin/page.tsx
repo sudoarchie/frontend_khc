@@ -22,7 +22,6 @@ export default function Page() {
 
   return (
     <div className="max-w-screen-xl mx-auto">
-      <NavbarSec></NavbarSec>
       <div className="flex h-screen items-center">
         <div className="hidden sm:block w-1/2">
           <h1 className="text-4xl text-center ">Hi, Welcome back</h1>

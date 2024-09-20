@@ -126,7 +126,6 @@ const blogs = [
 export default function Home() {
   return (
     <div>
-      <Navbar></Navbar>
       <div className="bg-[#272F42] h-[500px]">
         <div className="flex justify-between items-center mx-20">
           <div className="w-1/2 ">
