@@ -3,7 +3,7 @@ import khclogo from "@/public/logo_2 1.png";
 import Image from "next/image";
 export function Footer() {
   return (
-    <section className="relative overflow-hidden py-10 bg-[#01000F]">
+    <section className="relative overflow-hidden py-10 bg-[#01000F] text-white mt-5">
       <div className="relative z-10 mx-auto max-w-7xl px-4">
         <div className="-m-6 flex flex-wrap">
           <div className="w-full p-6 md:w-1/2 lg:w-5/12">
@@ -30,7 +30,7 @@ export function Footer() {
               <ul>
                 <li className="mb-4">
                   <a
-                    className=" text-base font-medium text-gray-900 hover:text-gray-700"
+                    className=" text-base font-medium text-white hover:text-white/70"
                     href="#"
                   >
                     Features
@@ -38,7 +38,7 @@ export function Footer() {
                 </li>
                 <li className="mb-4">
                   <a
-                    className=" text-base font-medium text-gray-900 hover:text-gray-700"
+                    className=" text-base font-medium text-white hover:text-white/70"
                     href="#"
                   >
                     Pricing
@@ -46,7 +46,7 @@ export function Footer() {
                 </li>
                 <li className="mb-4">
                   <a
-                    className=" text-base font-medium text-gray-900 hover:text-gray-700"
+                    className=" text-base font-medium text-white hover:text-white/70"
                     href="#"
                   >
                     Affiliate Program
@@ -54,7 +54,7 @@ export function Footer() {
                 </li>
                 <li>
                   <a
-                    className=" text-base font-medium text-gray-900 hover:text-gray-700"
+                    className=" text-base font-medium text-white hover:text-white/70"
                     href="#"
                   >
                     Press Kit
@@ -71,7 +71,7 @@ export function Footer() {
               <ul>
                 <li className="mb-4">
                   <a
-                    className=" text-base font-medium text-gray-900 hover:text-gray-700"
+                    className=" text-base font-medium text-white hover:text-white/70"
                     href="#"
                   >
                     Account
@@ -79,7 +79,7 @@ export function Footer() {
                 </li>
                 <li className="mb-4">
                   <a
-                    className=" text-base font-medium text-gray-900 hover:text-gray-700"
+                    className=" text-base font-medium text-white hover:text-white/70"
                     href="#"
                   >
                     Help
@@ -87,7 +87,7 @@ export function Footer() {
                 </li>
                 <li className="mb-4">
                   <a
-                    className=" text-base font-medium text-gray-900 hover:text-gray-700"
+                    className=" text-base font-medium text-white hover:text-white/70"
                     href="#"
                   >
                     Contact Us
@@ -95,7 +95,7 @@ export function Footer() {
                 </li>
                 <li>
                   <a
-                    className=" text-base font-medium text-gray-900 hover:text-gray-700"
+                    className=" text-base font-medium text-white hover:text-white/70"
                     href="#"
                   >
                     Customer Support
@@ -112,7 +112,7 @@ export function Footer() {
               <ul>
                 <li className="mb-4">
                   <a
-                    className=" text-base font-medium text-gray-900 hover:text-gray-700"
+                    className=" text-base font-medium text-white hover:text-white/70"
                     href="#"
                   >
                     Terms &amp; Conditions
@@ -120,7 +120,7 @@ export function Footer() {
                 </li>
                 <li className="mb-4">
                   <a
-                    className=" text-base font-medium text-gray-900 hover:text-gray-700"
+                    className=" text-base font-medium text-white hover:text-white/70"
                     href="#"
                   >
                     Privacy Policy
@@ -128,7 +128,7 @@ export function Footer() {
                 </li>
                 <li>
                   <a
-                    className=" text-base font-medium text-gray-900 hover:text-gray-700"
+                    className=" text-base font-medium text-white hover:text-white/70"
                     href="#"
                   >
                     Licensing
