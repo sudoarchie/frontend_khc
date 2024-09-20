@@ -18,6 +18,7 @@ import { CardTwo } from "./components/cardTwo";
 import { Box } from "./components/Box";
 import { InputField } from "./components/Inputfield";
 import { Faq } from "./components/faq";
+import { PinCard } from "./components/PinCard";
 const poppins = Poppins({
   subsets: ["latin"],
   weight: "800",
@@ -449,14 +450,14 @@ export default function Home() {
           Choose your Curriculum, Grade & subjects required for tutoring to get
           free trial
         </h2>
-        <div className="mt-5 flex flex-wrap gap-5 w-[90%] mx-auto justify-center">
+        <div className="my-10 mb-20 flex flex-wrap  w-[90%] gap-y-20 mx-auto justify-center">
           {curriculum.map((info, index) => (
-            <CardTwo
+            <PinCard
               title={info.title}
               discription={info.description}
               url={info.url}
               key={index}
-            ></CardTwo>
+            ></PinCard>
           ))}
         </div>
       </div>
@@ -495,15 +496,15 @@ export default function Home() {
       </div>
       <div>
         <div className="text-center mt-10 font-bold text-4xl">Latest Blogs</div>
-        <div className="flex flex-wrap mt-5 justify-center gap-5">
+        <div className="flex flex-wrap  justify-center gap-y-20 my-20">
           {blogs.map((info, index) => (
-            <CardTwo
+            <PinCard
               title={info.title}
               image={info.image}
               discription={info.description}
               key={index}
-              url={""}
-            ></CardTwo>
+              url={"https://google.com"}
+            ></PinCard>
           ))}
         </div>
         <PrimaryButton
