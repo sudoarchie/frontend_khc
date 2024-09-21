@@ -3,6 +3,7 @@ import Link from "next/link";
 import img1 from "@/public/cardTwo.jpg";
 import { PinContainer } from "./ui/3d-pin";
 import { CardSpotlight } from "./ui/card-spotlight";
+import GradientCard from "./gradientCard";
 
 interface cardData {
   title: string;
@@ -15,6 +16,7 @@ export function PinCard({ title, discription, image, url }: cardData) {
     <PinContainer title={title} href={url}>
       <div className="w-[300px] h-[350px]  py-2 rounded-xl">
         <h1 className="font-bold my-2 text-xl">{title}</h1>
+
         <Image
           src={image ? image : img1}
           alt={""}
