@@ -7,24 +7,24 @@ import Image from "next/image";
 const menuItems = [
   {
     name: "Home",
-    href: "#",
+    href: "/",
   },
 
   {
     name: "Courses",
-    href: "#",
+    href: "/courses",
   },
   {
     name: "Blogs",
-    href: "#",
+    href: "/blogs",
   },
   {
     name: "Videos",
-    href: "#",
+    href: "/videos",
   },
   {
     name: "Contact",
-    href: "#",
+    href: "/contact",
   },
 ];
 

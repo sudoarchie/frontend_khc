@@ -10,14 +10,14 @@ interface card {
 }
 export function CardThree({ title, discription, image, url }: card) {
   return (
-    <div className="w-[300px] h-[500px]  border p-5 bg-white rounded-2xl m-1">
+    <div className="w-[300px] h-[500px]  border p-5 bg-white rounded-2xl m-1 group">
       <Image
         src={image}
         alt={title}
-        className="h-[200px] w-full rounded-t-md object-cover"
+        className="h-[200px] w-full rounded-xl object-cover group-hover:scale-95 transition-all duration-200"
       />
       <div className="p-4">
-        <h1 className="inline-flex items-center text-lg font-semibold h-[50px]">
+        <h1 className="inline-flex items-center text-lg font-semibold h-[50px] group-hover:scale-95 transition-all duration-200">
           {title}
         </h1>
         <p className="mt-3 text-sm text-gray-600 h-[100px]">{discription}</p>

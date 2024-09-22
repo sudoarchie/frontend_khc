@@ -1,4 +1,5 @@
 import { CardThree } from "../components/CardThree";
+import GradientCard from "../components/gradientCard";
 import { Navbar } from "../components/Navbar";
 import { BackgroundGradient } from "../components/ui/background-gradient";
 import img1 from "@/public/430107972_7608970299142599_2611373766157426786_n.jpg";
@@ -42,17 +43,18 @@ export default function Courses() {
   ];
   return (
     <div>
-      <Navbar></Navbar>
       <h1 className="text-2xl font-bold text-center mt-5">Our Courses</h1>
-      <div className="m-5 flex flex-wrap gap-5">
+      <div className="m-5 flex flex-wrap gap-5 justify-center">
         {data.map((info, index) => (
-          <CardThree
-            title={info.title}
-            discription={info.description}
-            image={info.image}
-            url={info.url}
-            key={index}
-          ></CardThree>
+          <GradientCard>
+            <CardThree
+              title={info.title}
+              discription={info.description}
+              image={info.image}
+              url={info.url}
+              key={index}
+            ></CardThree>
+          </GradientCard>
         ))}
       </div>
     </div>
