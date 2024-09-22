@@ -14,7 +14,7 @@ interface cardData {
 export function PinCard({ title, discription, image, url }: cardData) {
   return (
     <PinContainer title={title} href={url}>
-      <div className="w-[300px] h-[350px]  py-2 rounded-xl">
+      <div className="w-[300px] h-[360px]  py-2 rounded-xl">
         <h1 className="font-bold my-2 text-xl">{title}</h1>
 
         <Image
@@ -22,7 +22,7 @@ export function PinCard({ title, discription, image, url }: cardData) {
           alt={""}
           className="rounded-2xl mx-auto"
         ></Image>
-        <p className="my-2">{discription}</p>
+        <p className="my-2 truncate text-wrap">{discription}</p>
       </div>
     </PinContainer>
   );
