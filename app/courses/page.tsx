@@ -46,7 +46,7 @@ export default function Courses() {
       <h1 className="text-2xl font-bold text-center mt-5">Our Courses</h1>
       <div className="m-5 flex flex-wrap gap-5 justify-center">
         {data.map((info, index) => (
-          <GradientCard>
+          <GradientCard key={index}>
             <CardThree
               title={info.title}
               discription={info.description}
