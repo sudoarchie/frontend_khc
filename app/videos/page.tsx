@@ -52,7 +52,11 @@ export default function Videos() {
       <h1 className="text-center font-bold text-4xl my-5">More Videos</h1>
       <div className="flex flex-wrap gap-5 justify-center w-[90%] mx-auto">
         {data.map((info, index) => (
-          <VideoCard title={info.title} href={info.href}></VideoCard>
+          <VideoCard
+            title={info.title}
+            href={info.href}
+            key={index}
+          ></VideoCard>
         ))}
       </div>
     </div>
