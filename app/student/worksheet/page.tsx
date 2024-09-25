@@ -30,6 +30,9 @@ export default function Worksheet() {
               <TableCell align="center">Name</TableCell>
               <TableCell align="center">Subject</TableCell>
               <TableCell align="center">Teacher</TableCell>
+              <TableCell align="center">Status</TableCell>
+              <TableCell align="center">Date</TableCell>
+
               <TableCell align="center">Assignment</TableCell>
               <TableCell align="center">Submit</TableCell>
             </TableRow>
