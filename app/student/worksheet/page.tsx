@@ -18,6 +18,17 @@ export default function Worksheet() {
       name: "Kafka",
       subject: "Cloud",
       teacher: "shivam singh",
+      status: true,
+      date: "12/12/24",
+      assignmentlink: "https://kafka.apache.org/intro",
+    },
+    {
+      id: 234,
+      name: "Kafka",
+      subject: "Cloud",
+      teacher: "shivam singh",
+      status: false,
+      date: "12/12/24",
       assignmentlink: "https://kafka.apache.org/intro",
     },
   ];
@@ -48,6 +59,18 @@ export default function Worksheet() {
                 </TableCell>
                 <TableCell align="center">{info.subject}</TableCell>
                 <TableCell align="center">{info.teacher}</TableCell>
+                <TableCell align="center">
+                  {info.status ? (
+                    <div className="rounded-full mx-auto text-white py-2 w-[100px] bg-green-500">
+                      Completed
+                    </div>
+                  ) : (
+                    <div className="rounded-full mx-auto text-white py-2 w-[100px] bg-red-400">
+                      Incomplete
+                    </div>
+                  )}
+                </TableCell>
+                <TableCell align="center">{info.date}</TableCell>
                 <TableCell align="center">
                   <Link href={info.assignmentlink} className="mx-auto">
                     <PrimaryButton
