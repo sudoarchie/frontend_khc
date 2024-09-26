@@ -191,7 +191,7 @@ export default function AdminPanelLayout({
 
   return (
     <div>
-      <div className="flex">
+      <div className="flex overflow-x-hidden">
         <Sidebar sidebarData={sidebarData}></Sidebar>
         <div className="w-full">
           <div className="mx-4">

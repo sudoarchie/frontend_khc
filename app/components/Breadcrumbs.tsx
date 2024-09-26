@@ -1,9 +1,11 @@
 "use client";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState, useMemo } from "react";
 
 export function Breadcrumb() {
   const [path, setPath] = useState<string[]>([]);
+  const pathname = usePathname();
 
   useEffect(() => {
     const urlExtract = () => {
@@ -14,16 +16,16 @@ export function Breadcrumb() {
     };
 
     urlExtract();
-  }, []);
+  }, [pathname]);
 
   // Memoize the link calculation to avoid unnecessary re-renders
-  const linkPaths = useMemo(() => {
-    let accumulatedPath = "";
-    return path.map((info, idx) => {
-      accumulatedPath += "/" + info;
-      return accumulatedPath;
-    });
-  }, [path]);
+  // const linkPaths = useMemo(() => {
+  //   let accumulatedPath = "";
+  //   return path.map((info, idx) => {
+  //     accumulatedPath += "/" + info;
+  //     return accumulatedPath;
+  //   });
+  // }, [pathname]);
 
   return (
     <nav aria-label="breadcrumb" className="w-max">
@@ -46,7 +48,7 @@ export function Breadcrumb() {
               /
             </span>
             <li className="flex items-center font-sans text-sm antialiased font-normal leading-normal transition-colors duration-300 cursor-pointer text-blue-gray-900 hover:text-light-blue-500">
-              <Link href={linkPaths[index]} className="opacity-60">
+              <Link href={`/${path[index]}`} className="opacity-60">
                 <span>{info}</span>
               </Link>
             </li>
