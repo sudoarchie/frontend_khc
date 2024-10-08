@@ -19,11 +19,11 @@ import { Box } from "./components/Box";
 import { InputField } from "./components/Inputfield";
 import { Faq } from "./components/faq";
 import { PinCard } from "./components/PinCard";
+
 const poppins = Poppins({
   subsets: ["latin"],
   weight: "800",
 });
-
 const curriculum = [
   {
     title: "CBSE",
@@ -126,37 +126,47 @@ const blogs = [
 
 export default function Home() {
   return (
-    <div>
-      <div className="bg-[#272F42] h-[500px]">
-        <div className="flex justify-between items-center mx-20">
-          <div className="w-1/2 ">
+    <div className="w-full">
+      <div className="bg-[#272F42] min-h-[500px] py-10">
+        <div className="flex flex-col md:flex-row justify-between items-center mx-4 md:mx-20">
+          <div className="w-full md:w-1/2 mb-8 md:mb-0">
             <div className={poppins.className}>
-              <h1 className="text-4xl font-bold text-white mb-2">
+              <h1 className="text-3xl md:text-4xl font-bold text-white mb-2">
                 Welcome to KHC
               </h1>
-              <div className="flex">
-                <span className="text-primary  text-4xl inline">
+              <div className="flex flex-wrap">
+                <span className="text-primary text-3xl md:text-4xl inline">
                   Personalized&nbsp;
                 </span>
-
-                <h1 className="text-4xl text-white">Online Tution</h1>
+                <h1 className="text-3xl md:text-4xl text-white">
+                  Online Tution
+                </h1>
               </div>
             </div>
-            <p className="text-white w-3/4 mt-5">
-              Online Tuition - Effective,convenient & Time-saving  only when you
+            <p className="text-white w-full md:w-3/4 mt-5">
+              Online Tuition - Effective, convenient & Time-saving only when you
               are under correct tutor/guidance
             </p>
-            <button className="text-white p-3 mt-5 rounded-full bg-primary ">
+            <button className="text-white p-3 mt-5 rounded-full bg-primary">
               JOIN NOW
             </button>
           </div>
-          <Image src={img1} alt={"Khc Image"} className="h-[500px]"></Image>
+          <Image
+            src={img1}
+            alt={"Khc Image"}
+            className="h-auto md:h-[500px] w-full md:w-auto"
+          ></Image>
         </div>
       </div>
-      <div className="bg-[#e7d5ca] h-[500px] flex justify-between items-center px-20">
-        <Image src={img2} alt={""} className="rounded-full mt-5"></Image>
-        <div className="w-1/2">
-          <h1 className="text-4xl font-extrabold">
+
+      <div className="bg-[#e7d5ca] min-h-[500px] py-10 flex flex-col md:flex-row justify-between items-center px-4 md:px-20">
+        <Image
+          src={img2}
+          alt={""}
+          className="rounded-full mt-5 w-full md:w-auto"
+        ></Image>
+        <div className="w-full md:w-1/2 mt-8 md:mt-0">
+          <h1 className="text-3xl md:text-4xl font-extrabold">
             Every Student is different
           </h1>
           <ul className="list-disc mt-5 ml-5 text-gray-600">
@@ -165,92 +175,83 @@ export default function Home() {
               grasping power.
             </li>
             <li className="mt-2">
-              Personalized Attention for young Geniuses of Primary to A-Level.
+              Personalized Attention for young Geniuses of Primary to A-Level.
             </li>
             <li className="mt-2">
-              Be the student below average or exceptionaly bright, KHC Tuition
+              Be the student below average or exceptionally bright, KHC Tuition
               provides the right solution.
             </li>
           </ul>
-          <div className="flex justify-start pl-5 mt-5 gap-5">
+          <div className="flex flex-col md:flex-row justify-start pl-5 mt-5 gap-5">
             <SecoundaryButton Name={"Join Our Courses Now"}></SecoundaryButton>
             <PrimaryButton Name={"Login Now"}></PrimaryButton>
           </div>
         </div>
       </div>
+
       <div>
-        <h1 className="text-center text-4xl font-extrabold my-10">Why KHC?</h1>
-        <div>
-          <div className="flex justify-center gap-10 items-center">
-            <CardFour
-              title={"Clear Concept Building"}
-              image={img3}
-              discription={
-                "Clear concept building ensures strong foundational knowledge for effective learning."
-              }
-            ></CardFour>
-            <div
-              className="h-[300px] border-solid border-2
-             border-borderColor"
-            ></div>
-            <CardFour
-              title={"Regular Assignment"}
-              image={img4}
-              discription={
-                "Regular assignments reinforce learning and ensure consistent progress in mastering topics."
-              }
-            ></CardFour>
-            <div
-              className="h-[300px] border-solid border-2
-             border-borderColor"
-            ></div>
-            <CardFour
-              title={"Past Paper Solving"}
-              image={img3}
-              discription={
-                "Past paper solving enhances exam readiness and strengthens understanding of key concepts."
-              }
-            ></CardFour>
-          </div>
-          <hr className="my-10 w-[70%] mx-auto border-2"></hr>
-          <div className="flex justify-center gap-10 items-center">
-            <CardFour
-              title={"Srong Foundation"}
-              image={img5}
-              discription={
-                "Making a strong foundation ensures a deeper understanding and lasting academic success."
-              }
-            ></CardFour>
-            <div
-              className="h-[300px] border-solid border-2
-             border-borderColor"
-            ></div>
-            <CardFour
-              title={"Doubt Discussion"}
-              image={img6}
-              discription={
-                "Doubt discussion clears confusion and fosters a deeper understanding of concepts."
-              }
-            ></CardFour>
-            <div
-              className="h-[300px] border-solid border-2
-             border-borderColor"
-            ></div>
-            <CardFour
-              title={"Critical Thinking"}
-              image={img7}
-              discription={
-                "Promoting critical thinking enhances problem-solving skills and deeper understanding."
-              }
-            ></CardFour>
-          </div>
+        <h1 className="text-center text-3xl md:text-4xl font-extrabold my-10">
+          Why KHC?
+        </h1>
+        <div className="flex flex-col md:flex-row justify-center gap-10 items-center flex-wrap">
+          <CardFour
+            title={"Clear Concept Building"}
+            image={img3}
+            discription={
+              "Clear concept building ensures strong foundational knowledge for effective learning."
+            }
+          ></CardFour>
+          <div className="hidden md:block h-[300px] border-solid border-2 border-borderColor"></div>
+          <CardFour
+            title={"Regular Assignment"}
+            image={img4}
+            discription={
+              "Regular assignments reinforce learning and ensure consistent progress in mastering topics."
+            }
+          ></CardFour>
+          <div className="hidden md:block h-[300px] border-solid border-2 border-borderColor"></div>
+          <CardFour
+            title={"Past Paper Solving"}
+            image={img3}
+            discription={
+              "Past paper solving enhances exam readiness and strengthens understanding of key concepts."
+            }
+          ></CardFour>
+        </div>
+        <hr className="my-10 w-[90%] md:w-[70%] mx-auto border-2"></hr>
+        <div className="flex flex-col md:flex-row justify-center gap-10 items-center flex-wrap">
+          <CardFour
+            title={"Strong Foundation"}
+            image={img5}
+            discription={
+              "Making a strong foundation ensures a deeper understanding and lasting academic success."
+            }
+          ></CardFour>
+          <div className="hidden md:block h-[300px] border-solid border-2 border-borderColor"></div>
+          <CardFour
+            title={"Doubt Discussion"}
+            image={img6}
+            discription={
+              "Doubt discussion clears confusion and fosters a deeper understanding of concepts."
+            }
+          ></CardFour>
+          <div className="hidden md:block h-[300px] border-solid border-2 border-borderColor"></div>
+          <CardFour
+            title={"Critical Thinking"}
+            image={img7}
+            discription={
+              "Promoting critical thinking enhances problem-solving skills and deeper understanding."
+            }
+          ></CardFour>
         </div>
       </div>
-      <div className="mt-10 w-[70%] mx-auto">
-        <h1 className="text-4xl font-extrabold text-center my-5">
+
+      <div className="mt-10 w-[90%] md:w-[70%] mx-auto">
+        <h1 className="text-3xl md:text-4xl font-extrabold text-center my-5">
           Learning The Art of Learning
         </h1>
         <ul className="p-4">
+          {/* ... (keep the list items as they are, they're already responsive) */}
           <li className="flex items-center mb-6 gap-5">
             <div>
               <svg
@@ -393,64 +394,80 @@ export default function Home() {
             friends, family of students & faculty, and anyone interested in
             learning this great methodology known for keeping the mind calm &
             concentrated and the body fit.
-          </li>
+          </li>{" "}
         </ul>
       </div>
-      <div className="bg-primary text-white p-10 w-[70%] h-[200px] mx-auto flex flex-col justify-center items-center rounded-xl">
-        <h2 className="text-3xl font-bold mb-5 ">Ready to join our course</h2>
-        <div className="flex flex-wrap justify-center items-center">
-          Get in touch: hello@xyz.com | Or apply for our course{" "}
+
+      <div className="bg-primary text-white p-6 md:p-10 w-[90%] md:w-[70%] mx-auto flex flex-col justify-center items-center rounded-xl mt-10">
+        <h2 className="text-2xl md:text-3xl font-bold mb-5 text-center">
+          Ready to join our course
+        </h2>
+        <div className="flex flex-col md:flex-row flex-wrap justify-center items-center text-center md:text-left">
+          <span className="mb-4 md:mb-0">
+            Get in touch: hello@xyz.com | Or apply for our course
+          </span>
           <SecoundaryButton
             Name={"Join Now"}
-            className="mx-5"
+            className="mt-4 md:mt-0 md:ml-5"
           ></SecoundaryButton>
         </div>
       </div>
-      <div className="flex h-[700px] relative top-[-100px] -z-10">
-        <div className="w-1/2 bg-[#272F41] text-white rounded-r-xl flex flex-col justify-center items-center gap-5">
-          <h1 className="text-4xl font-bold ">Start journey in 3 steps</h1>
-          <div className="w-[400px] h-[100px] rounded-lg p-5 flex  items-center gap-5 border-2 ">
+
+      <div className="flex flex-col md:flex-row min-h-[700px] relative md:top-[-100px] -z-10 mt-20 md:mt-0">
+        <div className="w-full md:w-1/2 bg-[#272F41] text-white rounded-b-xl md:rounded-r-xl flex flex-col justify-center items-center gap-5 py-10">
+          <h1 className="text-3xl md:text-4xl font-bold text-center">
+            Start journey in 3 steps
+          </h1>
+          <div className="w-[90%] md:w-[400px] h-[100px] rounded-lg p-5 flex items-center gap-5 border-2">
             <div className="rounded-full bg-primary h-[30px] w-[30px] flex justify-center items-center">
               1
             </div>
-            <div className="text-2xl font-bold"> Enquire</div>
+            <div className="text-xl md:text-2xl font-bold"> Enquire</div>
           </div>
-          <div className="w-[400px] h-[100px] rounded-lg p-5 flex  items-center gap-5 border-2 ">
+          <div className="w-[90%] md:w-[400px] h-[100px] rounded-lg p-5 flex items-center gap-5 border-2">
             <div className="rounded-full bg-primary h-[30px] w-[30px] flex justify-center items-center">
               2
             </div>
-            <div className="text-2xl font-bold"> Take a free trial</div>
+            <div className="text-xl md:text-2xl font-bold">
+              {" "}
+              Take a free trial
+            </div>
           </div>
-          <div className="w-[400px] h-[100px] rounded-lg p-5 flex  items-center gap-5 border-2 ">
+          <div className="w-[90%] md:w-[400px] h-[100px] rounded-lg p-5 flex items-center gap-5 border-2">
             <div className="rounded-full bg-primary h-[30px] w-[30px] flex justify-center items-center">
               3
             </div>
-            <div className="text-2xl font-bold">
+            <div className="text-xl md:text-2xl font-bold">
               Start your learning journey
             </div>
           </div>
         </div>
-        <div className="w-1/2 flex flex-col justify-center items-baseline bg-[#ffebde]">
+        <div className="w-full md:w-1/2 flex flex-col justify-center items-center bg-[#ffebde] py-10">
           <Image
             src={img9}
             alt={"Enquire"}
-            className="h-[500px] aspect-square object-contain"
+            className="h-auto md:h-[500px] w-full md:w-auto object-contain"
           ></Image>
-          <div className="flex flex-col mx-auto justify-center items-center">
-            <h1 className="text-4xl font-bold text-center">Inquire</h1>
+          <div className="flex flex-col mx-auto justify-center items-center mt-5">
+            <h1 className="text-3xl md:text-4xl font-bold text-center">
+              Inquire
+            </h1>
             <div className="text-center text-gray-600">
               Enroll in Our Courses with KHC Online Education
             </div>
           </div>
         </div>
       </div>
+
       <div className="mt-10">
-        <h1 className="text-4xl font-bold text-center">Our Popular Courses</h1>
-        <h2 className="text-gray-600 text-center">
+        <h1 className="text-3xl md:text-4xl font-bold text-center">
+          Our Popular Courses
+        </h1>
+        <h2 className="text-gray-600 text-center mt-2">
           Choose your Curriculum, Grade & subjects required for tutoring to get
           free trial
         </h2>
-        <div className="my-10 mb-20 flex flex-wrap  w-[90%] gap-y-20 mx-auto justify-center">
+        <div className="my-10 mb-20 flex flex-wrap w-[95%] md:w-[90%] gap-y-20 mx-auto justify-center">
           {curriculum.map((info, index) => (
             <PinCard
               title={info.title}
@@ -461,42 +478,52 @@ export default function Home() {
           ))}
         </div>
       </div>
+
       <div className="mt-10">
-        <h1 className="text-4xl font-bold text-center">
+        <h1 className="text-3xl md:text-4xl font-bold text-center">
           Post your tutoring requirement here
         </h1>
-        <Box className="w-[800px] mx-auto flex flex-col gap-5">
+        <Box className="w-[95%] md:w-[800px] mx-auto flex flex-col gap-5 mt-5">
           <InputField label={"Email"}></InputField>
           <InputField label={"Phone Number"}></InputField>
           <InputField label={"Message"}></InputField>
           <PrimaryButton Name={"Quick Enquiry"}></PrimaryButton>
         </Box>
       </div>
-      <div className="flex">
-        <div className="flex flex-col justify-center items-center mx-auto mt-5 w-1/2 ">
-          <h1 className="text-4xl font-bold ">Got questions?</h1>
-          <h3 className="text-gray-700 ">
+
+      <div className="flex flex-col md:flex-row mt-10">
+        <div className="flex flex-col justify-center items-center mx-auto mt-5 w-full md:w-1/2">
+          <h1 className="text-3xl md:text-4xl font-bold text-center">
+            Got questions?
+          </h1>
+          <h3 className="text-gray-700 text-center mt-2">
             Have a look through our frequently asked questions
           </h3>
-          <Image src={img10} alt={""}></Image>
+          <Image src={img10} alt={""} className="mt-5 w-full md:w-auto"></Image>
         </div>
-        <div className="w-1/2">
+        <div className="w-full md:w-1/2 mt-10 md:mt-0">
           <Faq data={faqData.data}></Faq>
         </div>
       </div>
 
-      <div className="w-[70%] h-[200px] mx-auto rounded-xl bg-secondary text-white flex flex-col justify-center items-center mt-10">
-        <h2 className="text-4xl font-bold">
+      <div className="w-[90%] md:w-[70%] mx-auto rounded-xl bg-secondary text-white flex flex-col justify-center items-center mt-10 py-10 px-4">
+        <h2 className="text-2xl md:text-4xl font-bold text-center">
           Get ready to build your future with us.
         </h2>
-        <div className="mt-5 flex gap-5 justify-center items-center">
-          Get in touch: email@gmail.com | Or post your tutoring requiment here
+        <div className="mt-5 flex flex-col md:flex-row gap-5 justify-center items-center text-center md:text-left">
+          <span>
+            Get in touch: email@gmail.com | Or post your tutoring requirement
+            here
+          </span>
           <PrimaryButton Name={"Quick Enquiry"}></PrimaryButton>
         </div>
       </div>
+
       <div>
-        <div className="text-center mt-10 font-bold text-4xl">Latest Blogs</div>
-        <div className="flex flex-wrap  justify-center gap-y-20 my-20">
+        <div className="text-center mt-10 font-bold text-3xl md:text-4xl">
+          Latest Blogs
+        </div>
+        <div className="flex flex-wrap justify-center gap-y-20 my-20">
           {blogs.map((info, index) => (
             <PinCard
               title={info.title}
