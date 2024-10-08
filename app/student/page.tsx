@@ -86,6 +86,7 @@ export default function Page() {
               title={info.title}
               href={info.href}
               image={info.image}
+              key={index}
             ></VideoCard>
           ))}
         </div>
