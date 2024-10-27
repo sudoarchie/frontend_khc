@@ -24,9 +24,7 @@ export function PinCard({ title, discription, image, url }: cardData) {
           height={200}
           className="rounded-2xl mx-auto w-[250px] aspect-square"
         ></Image>
-        <p className="my-2 truncate text-wrap  overflow-hidden">
-          {discription}
-        </p>
+        <p className="my-2 line-clamp-2">{discription}</p>
       </div>
     </PinContainer>
   );

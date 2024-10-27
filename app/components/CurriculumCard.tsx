@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { PinCard } from "./PinCard";
 import { useState } from "react";
+import Loader from "./Loading";
 
 interface CurriculumItem {
   name: string;
@@ -25,7 +26,11 @@ export function CurriculumCard() {
   });
 
   if (isLoading) {
-    return <div>Loading...</div>; // Handle loading state
+    return (
+      <div>
+        <Loader></Loader>
+      </div>
+    ); // Handle loading state
   }
 
   if (error) {
