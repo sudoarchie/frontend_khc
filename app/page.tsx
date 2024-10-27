@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import { Navbar } from "./components/Navbar";
 import img1 from "@/public/download.png";
@@ -19,43 +20,13 @@ import { Box } from "./components/Box";
 import { InputField } from "./components/Inputfield";
 import { Faq } from "./components/faq";
 import { PinCard } from "./components/PinCard";
+import { useQuery } from "@tanstack/react-query";
+import { CurriculumCard } from "./components/CurriculumCard";
 
 const poppins = Poppins({
   subsets: ["latin"],
   weight: "800",
 });
-const curriculum = [
-  {
-    title: "CBSE",
-    description:
-      "The Central Board of Secondary Education is a national-level board of education in India for public and private schools.",
-    url: "https://www.cbse.gov.in",
-  },
-  {
-    title: "IGCSE",
-    description:
-      "The International General Certificate of Secondary Education is an English language-based examination similar to GCSE.",
-    url: "https://www.cambridgeinternational.org/programmes-and-qualifications/cambridge-igcse/",
-  },
-  {
-    title: "Cambridge International",
-    description:
-      "Cambridge Assessment International Education prepares school students for life, helping them develop an informed curiosity and a lasting passion for learning.",
-    url: "https://www.cambridgeinternational.org",
-  },
-  {
-    title: "ICSE",
-    description:
-      "The Indian Certificate of Secondary Education is an examination conducted by the Council for the Indian School Certificate Examinations.",
-    url: "https://www.cisce.org",
-  },
-  {
-    title: "IB",
-    description:
-      "The International Baccalaureate is an international educational foundation offering four educational programmes for children aged 3–19.",
-    url: "https://www.ibo.org",
-  },
-];
 
 const faqData = {
   data: [
@@ -467,16 +438,8 @@ export default function Home() {
           Choose your Curriculum, Grade & subjects required for tutoring to get
           free trial
         </h2>
-        <div className="my-10 mb-20 flex flex-wrap w-[95%] md:w-[90%] gap-y-20 mx-auto justify-center">
-          {curriculum.map((info, index) => (
-            <PinCard
-              title={info.title}
-              discription={info.description}
-              url={info.url}
-              key={index}
-            ></PinCard>
-          ))}
-        </div>
+
+        <CurriculumCard></CurriculumCard>
       </div>
 
       <div className="mt-10">

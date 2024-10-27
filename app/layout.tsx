@@ -8,9 +8,10 @@ import {
   QueryClient,
   QueryClientProvider,
 } from "@tanstack/react-query";
-import { Provider } from "@/utils/Provider";
+
 import { Footer } from "./components/Footer";
 import { Navbar } from "./components/Navbar";
+import Providers from "@/utils/Provider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -27,7 +28,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <Navbar></Navbar>
-        <Provider>{children}</Provider>
+        <Providers>{children}</Providers>
         <Footer></Footer>
       </body>
     </html>
