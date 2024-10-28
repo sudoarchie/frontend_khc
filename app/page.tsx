@@ -22,6 +22,7 @@ import { Faq } from "./components/faq";
 import { PinCard } from "./components/PinCard";
 import { useQuery } from "@tanstack/react-query";
 import { CurriculumCard } from "./components/CurriculumCard";
+import BlogComponent from "./components/Blog";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -62,38 +63,6 @@ const faqData = {
     },
   ],
 };
-const blogs = [
-  {
-    title: "Understanding JavaScript Closures",
-    image: img2,
-    description:
-      "Learn about closures in JavaScript, how they work, and where you can use them in your projects.",
-  },
-  {
-    title: "Exploring React Hooks",
-    image: img2,
-    description:
-      "A deep dive into React Hooks, including useState, useEffect, and custom hooks, with practical examples.",
-  },
-  {
-    title: "Mastering CSS Grid",
-    image: img2,
-    description:
-      "This guide covers the CSS Grid layout system with tips, tricks, and real-world use cases for building responsive layouts.",
-  },
-  {
-    title: "Optimizing Web Performance with Next.js",
-    image: img2,
-    description:
-      "Discover various strategies to optimize web performance in Next.js applications, from static generation to code splitting.",
-  },
-  {
-    title: "TypeScript Best Practices",
-    image: img2,
-    description:
-      "A guide to writing clean, scalable, and maintainable TypeScript code by following best practices and design patterns.",
-  },
-];
 
 export default function Home() {
   return (
@@ -486,17 +455,7 @@ export default function Home() {
         <div className="text-center mt-10 font-bold text-3xl md:text-4xl">
           Latest Blogs
         </div>
-        <div className="flex flex-wrap justify-center gap-y-20 my-20">
-          {blogs.map((info, index) => (
-            <PinCard
-              title={info.title}
-              image={info.image}
-              discription={info.description}
-              key={index}
-              url={"https://google.com"}
-            ></PinCard>
-          ))}
-        </div>
+        <BlogComponent></BlogComponent>
         <PrimaryButton
           Name={"Show All Blogs"}
           className="mt-5 mx-auto"
