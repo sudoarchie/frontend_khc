@@ -23,6 +23,7 @@ import { PinCard } from "./components/PinCard";
 import { useQuery } from "@tanstack/react-query";
 import { CurriculumCard } from "./components/CurriculumCard";
 import BlogComponent from "./components/Blog";
+import EnquiryComponent from "./components/EnquiryComponent";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -415,12 +416,7 @@ export default function Home() {
         <h1 className="text-3xl md:text-4xl font-bold text-center">
           Post your tutoring requirement here
         </h1>
-        <Box className="w-[95%] md:w-[800px] mx-auto flex flex-col gap-5 mt-5">
-          <InputField label={"Email"}></InputField>
-          <InputField label={"Phone Number"}></InputField>
-          <InputField label={"Message"}></InputField>
-          <PrimaryButton Name={"Quick Enquiry"}></PrimaryButton>
-        </Box>
+        <EnquiryComponent></EnquiryComponent>
       </div>
 
       <div className="flex flex-col md:flex-row mt-10">
