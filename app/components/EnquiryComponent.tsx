@@ -5,22 +5,20 @@ import { useForm } from "react-hook-form";
 import { Box } from "./Box";
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
-
+interface FormData {
+  phoneNumber: string;
+  message: string;
+  email: string;
+}
 export default function EnquiryComponent() {
   const {
     register,
     handleSubmit,
     formState: { errors },
     reset,
-  } = useForm();
-
+  } = useForm<FormData>();
   const mutation = useMutation({
-    mutationFn: (data: {
-      phoneNumber: string;
-      message: string;
-      email: string;
-      // mobileNo: string;
-    }) => {
+    mutationFn: (data: FormData) => {
       return axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/enquiry`, {
         email: data.email,
         mobileNo: data.phoneNumber,
@@ -28,13 +26,10 @@ export default function EnquiryComponent() {
       });
     },
     onSuccess: () => {
-      reset(); // Clear form on success
+      reset();
     },
   });
-
-  const onSubmit = handleSubmit((data) => {
-    mutation.mutate(data);
-  });
+  const onSubmit = handleSubmit((data) => mutation.mutate(data));
 
   return (
     <Box className="w-[95%] md:w-[800px] mx-auto flex flex-col gap-5 mt-5">
