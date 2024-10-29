@@ -6,13 +6,13 @@ import { Breadcrumb } from "@/app/components/Breadcrumbs";
 import { SectionHeader } from "@/app/components/SectionHeader";
 import { validateToken } from "@/utils/studentLoginValidate";
 import { useRouter } from "next/navigation";
-import router from "next/navigation";
 
 export default function AdminPanelLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const router = useRouter();
   const sidebarData = [
     {
       title: "Student",
@@ -121,7 +121,7 @@ export default function AdminPanelLayout({
     console.log(validatedToken);
 
     if (!validatedToken) {
-      console.log(`bhag ja yaha se`); // Handle invalid token case
+      router.push("/login");
     }
   }
 
