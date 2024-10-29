@@ -1,4 +1,3 @@
-"use client";
 import Image from "next/image";
 import { Navbar } from "./components/Navbar";
 import img1 from "@/public/download.png";
@@ -17,7 +16,7 @@ import { PrimaryButton } from "./components/PrimaryButton";
 import { CardFour } from "./components/Cardfour";
 import { CardTwo } from "./components/cardTwo";
 import { Box } from "./components/Box";
-import { InputField } from "./components/Inputfield";
+
 import { Faq } from "./components/faq";
 import { PinCard } from "./components/PinCard";
 import { useQuery } from "@tanstack/react-query";

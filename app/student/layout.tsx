@@ -1,8 +1,12 @@
+"use client";
 import { Sidebar } from "@/app/components/SideBar";
 
 import { NavbarThird } from "../components/NavbarThird";
 import { Breadcrumb } from "@/app/components/Breadcrumbs";
 import { SectionHeader } from "@/app/components/SectionHeader";
+import { validateToken } from "@/utils/studentLoginValidate";
+import { useRouter } from "next/navigation";
+import router from "next/navigation";
 
 export default function AdminPanelLayout({
   children,
@@ -112,6 +116,16 @@ export default function AdminPanelLayout({
     },
   ];
 
+  async function checkValidation() {
+    const validatedToken = await validateToken(); // Wait for Validate to complete
+    console.log(validatedToken);
+
+    if (!validatedToken) {
+      console.log(`bhag ja yaha se`); // Handle invalid token case
+    }
+  }
+
+  checkValidation();
   return (
     <div className="overflow-x-hidden">
       <div className="flex">

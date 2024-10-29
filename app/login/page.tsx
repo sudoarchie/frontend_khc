@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import graphicsLogin from "@/public/8ff238e5b5acb1cf34f2dd1e1e2bcbea.png";
 import Link from "next/link";
 import { NavbarSec } from "@/app/components/NavbarSecoundary";
@@ -26,13 +26,22 @@ export default function Page() {
 
   const mutation = useMutation({
     mutationFn: (data: Inputs) => {
-      return axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/student/login`, {
-        email: data.email,
-        password: data.password,
-      });
+      return axios.post(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/student/login`,
+        {
+          email: data.email,
+          password: data.password,
+        },
+        {
+          withCredentials: true,
+        }
+      );
     },
     onSuccess: () => {
       router.push("/student");
+    },
+    onError: () => {
+      router.push("/");
     },
   });
   const onSubmit = handleSubmit((data) => mutation.mutate(data));
