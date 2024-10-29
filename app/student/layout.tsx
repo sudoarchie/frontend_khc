@@ -116,12 +116,13 @@ export default function AdminPanelLayout({
     <div className="overflow-x-hidden">
       <div className="flex">
         <Sidebar sidebarData={sidebarData}></Sidebar>
-        <div className="w-full">
+
+        <div className="w-full overflow-y-scroll">
           <div className="mx-4">
             <SectionHeader></SectionHeader>
             <Breadcrumb></Breadcrumb>
           </div>
-          <div className="w-full">{children}</div>
+          <div className="w-full ">{children}</div>
         </div>
       </div>
     </div>

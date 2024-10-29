@@ -1,25 +1,41 @@
 "use client";
 import Image from "next/image";
 import { useForm, SubmitHandler } from "react-hook-form";
-
+import { useRouter } from "next/router";
 import graphicsLogin from "@/public/8ff238e5b5acb1cf34f2dd1e1e2bcbea.png";
 import Link from "next/link";
 import { NavbarSec } from "@/app/components/NavbarSecoundary";
 import { Button, TextField } from "@mui/material";
 import OptionField from "../components/OptionField";
-
+import { useMutation } from "@tanstack/react-query";
+import axios from "axios";
+interface Inputs {
+  email: string;
+  password: string;
+}
 export default function Page() {
-  type Inputs = {
-    email: string;
-    password: string;
-  };
+  const router = useRouter();
   const {
     register,
     handleSubmit,
     watch,
+    reset,
     formState: { errors },
   } = useForm<Inputs>();
-  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
+  // const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
+
+  const mutation = useMutation({
+    mutationFn: (data: Inputs) => {
+      return axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/student/login`, {
+        email: data.email,
+        password: data.password,
+      });
+    },
+    onSuccess: () => {
+      router.push("/student");
+    },
+  });
+  const onSubmit = handleSubmit((data) => mutation.mutate(data));
 
   return (
     <div className="max-w-screen-xl mx-auto">
@@ -44,12 +60,7 @@ export default function Page() {
                 Get started
               </Link>
             </div>
-            <form onSubmit={handleSubmit(onSubmit)} className="mt-20">
-              <OptionField
-                Label={"Login as"}
-                Option={["Student", "Teacher"]}
-                className="w-full sm:w-[80%] mx-auto sm:mx-0"
-              ></OptionField>
+            <form onSubmit={onSubmit} className="mt-20">
               <TextField
                 id="outlined-basic"
                 variant="outlined"
