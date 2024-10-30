@@ -64,12 +64,12 @@ export function Navbar() {
           </ul>
         </div>
         <div className="hidden lg:block">
-          <Link href={"/login"}>
+          <Link href={"/student"}>
             <button
               type="button"
               className="rounded-md bg-primary px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-primary/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
             >
-              Login
+              Student Dashboard
             </button>
           </Link>
         </div>
@@ -117,12 +117,14 @@ export function Navbar() {
                     ))}
                   </nav>
                 </div>
-                <button
-                  type="button"
-                  className="mt-4 w-full rounded-md bg-primary px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-primary/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
-                >
-                  Button text
-                </button>
+                <Link href={"/student"}>
+                  <button
+                    type="button"
+                    className="mt-4 w-full rounded-md bg-primary px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-primary/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+                  >
+                    Student Dashboard
+                  </button>
+                </Link>
               </div>
             </div>
           </div>
