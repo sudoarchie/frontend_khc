@@ -1,3 +1,4 @@
+"use client";
 import { PrimaryButton } from "@/app/components/PrimaryButton";
 import { SecoundaryButton } from "@/app/components/SecoundaryButton";
 import {
@@ -9,10 +10,25 @@ import {
   TableHead,
   TableRow,
 } from "@mui/material";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
 import Link from "next/link";
-
 export default function Worksheet() {
-  const data = [
+  const { data, isLoading, error } = useQuery({
+    queryKey: [`generalVideo`],
+    queryFn: async () => {
+      const response = await axios({
+        url: `${process.env.NEXT_PUBLIC_BASE_URL}/assignment/?take=10`,
+        withCredentials: true,
+      });
+      console.log(response.data.data);
+      return response.data.data;
+    },
+  });
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>Error loading assignments.</div>;
+
+  const Data = [
     {
       id: 234,
       name: "Kafka",
@@ -49,18 +65,20 @@ export default function Worksheet() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {data.map((info, index) => (
+            {data.map((info: any, index: number) => (
               <TableRow
                 key={index}
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
               >
                 <TableCell component="th" scope="row" align="center">
-                  {info.name}
+                  {info.assignment.name}
                 </TableCell>
-                <TableCell align="center">{info.subject}</TableCell>
-                <TableCell align="center">{info.teacher}</TableCell>
                 <TableCell align="center">
-                  {info.status ? (
+                  {info.assignment.subject.name}
+                </TableCell>
+                <TableCell align="center">{info.teacher.name}</TableCell>
+                <TableCell align="center">
+                  {info.completed ? (
                     <div className="rounded-full mx-auto text-white py-2 w-[100px] bg-green-500">
                       Completed
                     </div>
@@ -70,9 +88,9 @@ export default function Worksheet() {
                     </div>
                   )}
                 </TableCell>
-                <TableCell align="center">{info.date}</TableCell>
+                <TableCell align="center">{info.deadline}</TableCell>
                 <TableCell align="center">
-                  <Link href={info.assignmentlink} className="mx-auto">
+                  <Link href={info.assignment.url} className="mx-auto">
                     <PrimaryButton
                       Name={"View"}
                       className="mx-auto"
