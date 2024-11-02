@@ -4,7 +4,6 @@ import { useForm, SubmitHandler } from "react-hook-form";
 
 import graphicsLogin from "@/public/8ff238e5b5acb1cf34f2dd1e1e2bcbea.png";
 import Link from "next/link";
-import { NavbarSec } from "@/app/components/NavbarSecoundary";
 import { Button, TextField } from "@mui/material";
 
 export default function Page() {
@@ -36,14 +35,8 @@ export default function Page() {
         </div>
         <div className=" w-full sm:w-1/2">
           <div className="mx-10 mb-5">
-            <h1 className="text-2xl">Sign in to your account</h1>
-            <div className=" flex gap-1">
-              Don&apos;t have an account?
-              <Link href="/signup" className="text-primary">
-                Get started
-              </Link>
-            </div>
-            <form onSubmit={handleSubmit(onSubmit)} className="mt-20">
+            <h1 className="text-2xl">Sign into your account</h1>
+            <form onSubmit={handleSubmit(onSubmit)} className="mt-10">
               <TextField
                 id="outlined-basic"
                 variant="outlined"

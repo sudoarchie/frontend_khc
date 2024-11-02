@@ -1,8 +1,5 @@
-import { Breadcrumb } from "@/app/components/Breadcrumbs";
+"use client";
 import { DashboardCard } from "@/app/components/DashboardCard";
-import { NavbarSec } from "@/app/components/NavbarSecoundary";
-import { NavbarThird } from "@/app/components/NavbarThird";
-import { Sidebar } from "@/app/components/SideBar";
 
 export default function Page() {
   const dashboardData = [
