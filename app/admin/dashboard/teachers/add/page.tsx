@@ -1,56 +1,89 @@
-"use client ";
+"use client";
+
 import { useForm, SubmitHandler } from "react-hook-form";
 import { Box } from "@/app/components/Box";
-import { InputField } from "@/app/components/Inputfield";
 import { PrimaryButton } from "@/app/components/PrimaryButton";
 import { UploadField } from "@/app/components/UploadField";
+import TextField from "@mui/material/TextField";
+import {
+  Button,
+  FormControl,
+  InputLabel,
+  MenuItem,
+  Select,
+} from "@mui/material";
+import { useEffect, useState } from "react";
 
 type Inputs = {
   fullName: string;
   phoneNo: number;
   email: string;
   password: string;
+  subjects: string[];
 };
 
-export default function AddTecher() {
+export default function AddTeacher() {
+  const { register, handleSubmit, setValue } = useForm<Inputs>();
+  const onSubmit: SubmitHandler<Inputs> = (data) => {
+    console.log(data);
+  };
+
+  const [selectedSubjects, setSelectedSubjects] = useState<string[]>([]);
+
+  const handleSubjectChange = (
+    event: React.ChangeEvent<{ value: unknown }>,
+  ) => {
+    const value = event.target.value as string[];
+    setSelectedSubjects(value);
+    setValue("subjects", value); // Update form value in react-hook-form
+  };
+
   return (
-    <div>
+    <form onSubmit={handleSubmit(onSubmit)}>
       <Box Heading="Credential">
         <div className="grid grid-cols-2 justify-items-center gap-y-5 my-5">
-          <InputField
-            label={"Full Name"}
-            placeholder={""}
+          <TextField
+            label="Full Name"
+            placeholder=""
+            variant="outlined"
+            type="text"
             className="w-3/4"
-            type={"text"}
-          ></InputField>
-          <InputField
-            label={"Phone Number"}
-            placeholder={""}
+            {...register("fullName", { required: true })}
+          />
+          <TextField
+            label="Phone Number"
+            placeholder=""
+            variant="outlined"
+            type="text"
             className="w-3/4"
-            type={"text"}
-          ></InputField>
-          <InputField
-            label={"Email"}
-            placeholder={""}
+            {...register("phoneNo", { required: true })}
+          />
+          <TextField
+            label="Email"
+            placeholder=""
+            variant="outlined"
+            type="email"
             className="w-3/4"
-            type={"email"}
-          ></InputField>
-          <InputField
-            label={"Password"}
-            placeholder={""}
-            className="w-3/4 gap-"
-            type={"password"}
-          ></InputField>
+            {...register("email", { required: true })}
+          />
+          <TextField
+            label="Password"
+            placeholder=""
+            variant="outlined"
+            type="password"
+            className="w-3/4"
+            {...register("password", { required: true })}
+          />
         </div>
       </Box>
       <Box Heading="Upload Files">
         <div className="grid grid-cols-2 justify-items-center mt-5">
           <div className="flex flex-col w-[70%]">
-            <UploadField></UploadField>
+            <UploadField />
             <h2 className="text-lg mt-5 text-center">Government certified</h2>
           </div>
           <div className="flex flex-col w-[70%]">
-            <UploadField></UploadField>
+            <UploadField />
             <h2 className="text-lg mt-5 text-center">
               Highest qualification certificate
             </h2>
@@ -59,25 +92,28 @@ export default function AddTecher() {
       </Box>
       <Box Heading="Subject">
         <div className="grid grid-cols-2 justify-items-center gap-y-5 my-5">
-          <InputField
-            label={"Full Name"}
-            placeholder={""}
-            className="w-3/4"
-            type={"text"}
-          ></InputField>
-          <InputField
-            label={"Phone Number"}
-            placeholder={""}
-            className="w-3/4"
-            type={"text"}
-          ></InputField>
+          <FormControl fullWidth>
+            <InputLabel id="demo-multiple-select-label">Subject</InputLabel>
+            <Select
+              labelId="demo-multiple-select-label"
+              id="demo-multiple-select"
+              multiple
+              value={selectedSubjects}
+              onChange={handleSubjectChange}
+              label="Subjects"
+              renderValue={(selected) => (selected as string[]).join(", ")}
+            >
+              <MenuItem value={"sub1"}>sub1</MenuItem>
+              <MenuItem value={"sub2"}>sub2</MenuItem>
+              <MenuItem value={"sub3"}>sub3</MenuItem>
+            </Select>
+          </FormControl>
         </div>
-        <PrimaryButton Name={"+ ADD"} className=""></PrimaryButton>
       </Box>
       <PrimaryButton
         Name={"ADD TEACHER"}
         className="w-[calc(100%-40px)] mx-auto"
-      ></PrimaryButton>
-    </div>
+      />
+    </form>
   );
 }
