@@ -1,6 +1,6 @@
 "use client";
-import { InputField } from "@/app/components/Inputfield";
 import { PrimaryButton } from "@/app/components/PrimaryButton";
+import { TextField } from "@mui/material";
 import { useForm, SubmitHandler } from "react-hook-form";
 
 type Inputs = {
@@ -26,69 +26,85 @@ export default function AddStudent() {
     <div className="flex flex-col h-full  justify-center items-center">
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 w-full sm:max-w-[900px] mt-16">
-          <InputField
-            label={"First Name"}
-            placeholder={""}
-            type={"text"}
-            className="w-[95%] m-auto sm:w-[400px] "
+          <TextField
+            label="First Name"
+            placeholder=""
+            variant="outlined"
+            type="text"
+            className="w-[95%] m-auto sm:w-[400px]"
             {...register("firstName", { required: true })}
-          ></InputField>
-          <InputField
-            label={"Last Name"}
-            placeholder={""}
-            type={"text"}
+          />
+          <TextField
+            label="Last Name"
+            placeholder=""
+            variant="outlined"
+            type="text"
             className="w-[95%] m-auto sm:w-[400px]"
             {...register("lastName", { required: true })}
-          ></InputField>
-          <InputField
-            label={"Email"}
-            placeholder={""}
-            type={"text"}
+          />
+
+          <TextField
+            label="Email"
+            placeholder=""
+            variant="outlined"
+            type="text"
             className="w-[95%] m-auto sm:w-[400px]"
             {...register("email", { required: true })}
-          ></InputField>
-          <InputField
-            label={"Password"}
-            placeholder={""}
-            type={"Password"}
+          />
+
+          <TextField
+            label="Password"
+            placeholder=""
+            variant="outlined"
+            type="password"
             className="w-[95%] m-auto sm:w-[400px]"
             {...register("password", { required: true })}
-          ></InputField>
-          <InputField
-            label={"Phone Number"}
-            placeholder={""}
-            type={"text"}
+          />
+
+          <TextField
+            label="Phone Number"
+            placeholder=""
+            variant="outlined"
+            type="text"
             className="w-[95%] m-auto sm:w-[400px]"
             {...register("phoneNumber", { required: true })}
-          ></InputField>
-          <InputField
-            label={"Curriculum"}
-            placeholder={""}
-            type={"text"}
+          />
+
+          <TextField
+            label="Curriculum"
+            placeholder=""
+            variant="outlined"
+            type="text"
             className="w-[95%] m-auto sm:w-[400px]"
             {...register("curriculum", { required: true })}
-          ></InputField>
-          <InputField
-            label={"Grade"}
-            placeholder={""}
-            type={"text"}
+          />
+
+          <TextField
+            label="Grade"
+            placeholder=""
+            variant="outlined"
+            type="text"
             className="w-[95%] m-auto sm:w-[400px]"
-          ></InputField>
-          <InputField
-            label={"Subject"}
-            placeholder={""}
-            type={"text"}
+          />
+
+          <TextField
+            label="Subject"
+            placeholder=""
+            variant="outlined"
+            type="text"
             className="w-[95%] m-auto sm:w-[400px]"
             {...register("subject", { required: true })}
-          ></InputField>
+          />
+
+          <TextField
+            label="Choose Country"
+            placeholder=""
+            variant="outlined"
+            type="text"
+            className="w-full sm:max-w-[860px] mt-5"
+            {...register("country", { required: true })}
+          />
         </div>
-        <InputField
-          label={"Choose Country"}
-          placeholder={""}
-          type={"text"}
-          className="w-full sm:max-w-[860px] mt-5"
-          {...register("country", { required: true })}
-        ></InputField>
         <PrimaryButton
           Name={"ADD STUDENT"}
           type="submit"

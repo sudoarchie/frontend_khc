@@ -1,4 +1,3 @@
-"use client";
 import { DashboardCard } from "@/app/components/DashboardCard";
 
 export default function Page() {
