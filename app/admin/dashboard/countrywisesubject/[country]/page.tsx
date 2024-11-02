@@ -1,28 +1,22 @@
 "use client";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { Box } from "@/app/components/Box";
-import { InputField } from "@/app/components/Inputfield";
 import { PrimaryButton } from "@/app/components/PrimaryButton";
 import TableField from "@/app/components/TableField";
+import TextField from "@mui/material/TextField";
 
 type Inputs = {
   subject: string;
 };
+
 export default function Country({ params }: { params: { country: string } }) {
   const subjectList = [
-    {
-      Subject: "Maths",
-    },
-    {
-      Subject: "Physics",
-    },
-    {
-      Subject: "Chemistry",
-    },
-    {
-      Subject: "Computer science",
-    },
+    { Subject: "Maths" },
+    { Subject: "Physics" },
+    { Subject: "Chemistry" },
+    { Subject: "Computer Science" },
   ];
+
   const {
     register,
     handleSubmit,
@@ -35,22 +29,22 @@ export default function Country({ params }: { params: { country: string } }) {
     <div>
       <Box Heading="ADD SUBJECT" className="w-[95%] mx-auto">
         <form onSubmit={handleSubmit(onSubmit)}>
-          <InputField
-            label={"Subject Name"}
-            placeholder={""}
-            type={"text"}
+          <TextField
+            label="Subject Name"
+            variant="outlined"
+            fullWidth
             className="w-[95%] mx-auto mt-5"
             {...register("subject", { required: true })}
-          ></InputField>
+          />
           <PrimaryButton
             Name={"+ ADD SUBJECT"}
             className="w-[95%] mx-auto mt-5"
             type="submit"
-          ></PrimaryButton>
+          />
         </form>
       </Box>
       <Box className="w-[95%] mx-auto">
-        <TableField rows={subjectList}></TableField>
+        <TableField rows={subjectList} />
       </Box>
     </div>
   );
