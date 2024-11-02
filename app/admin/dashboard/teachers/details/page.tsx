@@ -23,6 +23,7 @@ import dp from "@/public/dp.jpg";
 import { CardOne } from "@/app/components/CardOne";
 import TableField from "@/app/components/TableField";
 import { PrimaryButton } from "@/app/components/PrimaryButton";
+import { TextField } from "@mui/material";
 
 export default function TeacherDetails() {
   const {
@@ -118,73 +119,84 @@ export default function TeacherDetails() {
         <div className="flex flex-col justify-center items-center">
           <Image
             src={data.imagelink}
-            alt={""}
+            alt="Profile"
             className="w-40 h-40 rounded-full mt-5"
-          ></Image>
-          <InputField
-            label={"Teacher Name"}
-            placeholder={""}
+          />
+          <TextField
+            label="Teacher Name"
             defaultValue={data.teacherName}
-            type={"text"}
+            fullWidth
             className="mt-5 w-[70%]"
             {...register("teacherName", { required: true })}
-          ></InputField>
-          <InputField
-            label={"Name one"}
-            placeholder={""}
+            error={!!errors.teacherName}
+            helperText={errors.teacherName && "Teacher Name is required"}
+          />
+          <TextField
+            label="Name One"
             defaultValue={data.NameOne}
-            type={""}
-            {...register("nameOne", { required: true })}
+            fullWidth
             className="mt-5 w-[70%]"
-          ></InputField>
-          <InputField
-            label={"Name two"}
-            placeholder={""}
+            {...register("nameOne", { required: true })}
+            error={!!errors.nameOne}
+            helperText={errors.nameOne && "Name One is required"}
+          />
+          <TextField
+            label="Name Two"
             defaultValue={data.NameTwo}
-            type={""}
+            fullWidth
             className="mt-5 w-[70%]"
             {...register("nameTwo", { required: true })}
-          ></InputField>
-          <InputField
-            label={"Name three"}
-            placeholder={""}
+            error={!!errors.nameTwo}
+            helperText={errors.nameTwo && "Name Two is required"}
+          />
+          <TextField
+            label="Name Three"
             defaultValue={data.NameThree}
-            type={""}
+            fullWidth
+            className="mt-5 w-[70%]"
             {...register("nameThree", { required: true })}
-            className="mt-5 w-[70%]"
-          ></InputField>
-          <InputField
-            label={"Email Address"}
-            placeholder={""}
+            error={!!errors.nameThree}
+            helperText={errors.nameThree && "Name Three is required"}
+          />
+          <TextField
+            label="Email Address"
             defaultValue={data.Email}
-            type={"email"}
-            {...register("email", { required: true })}
+            fullWidth
             className="mt-5 w-[70%]"
-          ></InputField>
-          <InputField
-            label={"Country"}
-            placeholder={""}
+            {...register("email", { required: true })}
+            error={!!errors.email}
+            helperText={errors.email && "Email is required"}
+          />
+          <TextField
+            label="Country"
             defaultValue={data.Country}
-            type={"text"}
+            fullWidth
             className="mt-5 w-[70%]"
             {...register("country", { required: true })}
-          ></InputField>
-          <InputField
-            label={"Phone Number"}
-            placeholder={""}
+            error={!!errors.country}
+            helperText={errors.country && "Country is required"}
+          />
+          <TextField
+            label="Phone Number"
             defaultValue={data.Phone}
-            type={"number"}
+            type="number"
+            fullWidth
             className="mt-5 w-[70%]"
             {...register("MobileNumber", { required: true })}
-          ></InputField>
-          <InputField
-            label={"Joined In"}
-            placeholder={""}
+            error={!!errors.MobileNumber}
+            helperText={errors.MobileNumber && "Phone Number is required"}
+          />
+          <TextField
+            label="Joined Date"
+            type="date"
             defaultValue={data.JoinedIn}
-            type={"date"}
+            fullWidth
             className="mt-5 w-[70%]"
+            InputLabelProps={{ shrink: true }}
             {...register("joinedDate", { required: true })}
-          ></InputField>
+            error={!!errors.joinedDate}
+            helperText={errors.joinedDate && "Joined Date is required"}
+          />
         </div>
       </Box>
       <Box Heading="Teacher Id and Highest Qualification" className="p-5">
@@ -208,46 +220,50 @@ export default function TeacherDetails() {
       </Box>
       <Box Heading="Bank Details">
         <div className="flex flex-wrap">
-          <InputField
-            label={"Bank Name"}
-            placeholder={""}
+          <TextField
+            label="Bank Name"
+            variant="outlined"
             defaultValue={bankData.bankName}
+            fullWidth
             className="w-[70%] mt-5 mx-auto"
-            type={""}
             {...register("bankName", { required: true })}
-          ></InputField>
-          <InputField
-            label={"Branch"}
-            placeholder={""}
+          />
+
+          <TextField
+            label="Branch"
+            variant="outlined"
             defaultValue={bankData.branch}
+            fullWidth
             className="w-[70%] mt-5 mx-auto"
-            type={"text"}
             {...register("branch", { required: true })}
-          ></InputField>
-          <InputField
-            label={"Account Number "}
-            placeholder={""}
+          />
+
+          <TextField
+            label="Account Number"
+            variant="outlined"
             defaultValue={bankData.accountNumber}
+            fullWidth
             className="w-[70%] mt-5 mx-auto"
-            type={"text"}
             {...register("accountNumber", { required: true })}
-          ></InputField>
-          <InputField
-            label={"IFSC Code"}
-            placeholder={""}
+          />
+
+          <TextField
+            label="IFSC Code"
+            variant="outlined"
             defaultValue={bankData.ifscCode}
+            fullWidth
             className="w-[70%] mt-5 mx-auto"
-            type={"text"}
             {...register("ifsccode", { required: true })}
-          ></InputField>
-          <InputField
-            label={"Paypal Email"}
-            placeholder={""}
+          />
+
+          <TextField
+            label="Paypal Email"
+            variant="outlined"
             defaultValue={bankData.paypalEmail}
+            fullWidth
             className="w-[70%] mt-5 mx-auto"
-            type={"text"}
             {...register("paypalemail", { required: true })}
-          ></InputField>
+          />
         </div>
       </Box>
       <PrimaryButton
