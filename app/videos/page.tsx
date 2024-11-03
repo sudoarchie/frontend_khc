@@ -3,6 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import { VideoCard } from "../components/videoCard";
 import axios from "axios";
 import Loader from "../components/Loading";
+import { Error } from "../components/error";
 interface VideoSchema {
   id: string;
   name: string;
@@ -25,7 +26,11 @@ export default function Videos() {
     return <Loader></Loader>;
   }
   if (error) {
-    return <div>Error</div>;
+    return (
+      <div>
+        <Error></Error>
+      </div>
+    );
   }
   return (
     <div>
