@@ -4,6 +4,7 @@ import { CardThree } from "../components/CardThree";
 import GradientCard from "../components/gradientCard";
 import axios from "axios";
 import Loader from "../components/Loading";
+import { Error } from "../components/error";
 interface responseData {
   id: string;
   name: string;
@@ -26,14 +27,14 @@ export default function Courses() {
     return <Loader></Loader>;
   }
   if (error) {
-    return <div>error</div>;
+    return <Error></Error>;
   }
 
   return (
     <div>
       <h1 className="text-2xl font-bold text-center mt-5">Our Courses</h1>
       <div className="m-5 flex flex-wrap gap-5 justify-center">
-        {data.map((info, index) => (
+        {data?.map((info, index) => (
           <GradientCard key={index}>
             <CardThree
               title={info.name}
