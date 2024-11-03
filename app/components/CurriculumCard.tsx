@@ -4,6 +4,7 @@ import { PinCard } from "./PinCard";
 import { useState } from "react";
 import Loader from "./Loading";
 import axios from "axios";
+import { Error } from "./error";
 
 interface CurriculumItem {
   name: string;
@@ -19,12 +20,6 @@ export function CurriculumCard() {
       const response = await axios.get(
         `${process.env.NEXT_PUBLIC_BASE_URL}/curriculum/data`
       );
-
-      // Check for a successful response
-      if (response.status !== 200) {
-        throw new Error("Network response was not ok");
-      }
-
       const result = response.data;
       return result.data.data;
     },
@@ -39,7 +34,7 @@ export function CurriculumCard() {
   }
 
   if (error) {
-    return <div>Error: {error.message}</div>; // Handle error state
+    return <Error></Error>; // Handle error state
   }
 
   return (
