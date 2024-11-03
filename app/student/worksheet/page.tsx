@@ -1,4 +1,6 @@
 "use client";
+import { Error } from "@/app/components/error";
+import Loader from "@/app/components/Loading";
 import { PrimaryButton } from "@/app/components/PrimaryButton";
 import { SecoundaryButton } from "@/app/components/SecoundaryButton";
 import {
@@ -15,7 +17,7 @@ import axios from "axios";
 import Link from "next/link";
 export default function Worksheet() {
   const { data, isLoading, error } = useQuery({
-    queryKey: [`generalVideo`],
+    queryKey: [`AssignmentStudent`],
     queryFn: async () => {
       const response = await axios({
         url: `${process.env.NEXT_PUBLIC_BASE_URL}/assignment/?take=10`,
@@ -25,8 +27,12 @@ export default function Worksheet() {
       return response.data.data;
     },
   });
-  if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>Error loading assignments.</div>;
+  if (isLoading) {
+    return <Loader></Loader>;
+  }
+  if (error) {
+    return <Error></Error>;
+  }
 
   const Data = [
     {
