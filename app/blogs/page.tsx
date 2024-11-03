@@ -6,6 +6,7 @@ import { PinCard } from "../components/PinCard";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import Loader from "../components/Loading";
+import { Error } from "../components/error";
 
 interface BlogData {
   id: string;
@@ -19,7 +20,7 @@ export default function Blogs() {
     queryKey: ["blog"],
     queryFn: async () => {
       const response = await axios.get(
-        `${process.env.NEXT_PUBLIC_BASE_URL}/blog/?take=15`,
+        `${process.env.NEXT_PUBLIC_BASE_URL}/blog/?take=15`
       );
       return response.data.data;
     },
@@ -30,7 +31,7 @@ export default function Blogs() {
   }
 
   if (error) {
-    return <div>Error fetching blogs. Please try again later.</div>;
+    return <Error></Error>;
   }
 
   const pinBlog = data ? data.slice(0, 1) : [];
