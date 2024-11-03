@@ -15,6 +15,7 @@ import Loader from "../components/Loading";
 import { StaticImageData } from "next/image";
 import { Key } from "react";
 import Link from "next/link";
+import { Error } from "../components/error";
 
 export default function Page() {
   const { data, isLoading, error } = useQuery({
@@ -45,7 +46,7 @@ export default function Page() {
     return <Loader></Loader>;
   }
   if (error) {
-    return <div> error</div>;
+    return <Error></Error>;
   }
   console.log(data);
   const dashboardData = [
@@ -66,45 +67,6 @@ export default function Page() {
     },
   ];
 
-  const VideoData = [
-    {
-      title: "Terraform Course - Automate your AWS cloud infrastructure",
-      href: "https://www.youtube.com/watch?v=SLB_c_ayRMo",
-      image:
-        "https://i.ytimg.com/vi/SLB_c_ayRMo/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAqHLXrmXXHVTjWsI9BDYCqAMcpIA",
-    },
-    {
-      title: "Terraform Course - Automate your AWS cloud infrastructure",
-      href: "https://www.youtube.com/watch?v=SLB_c_ayRMo",
-      image:
-        "https://i.ytimg.com/vi/SLB_c_ayRMo/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAqHLXrmXXHVTjWsI9BDYCqAMcpIA",
-    },
-    {
-      title: "Terraform Course - Automate your AWS cloud infrastructure",
-      href: "https://www.youtube.com/watch?v=SLB_c_ayRMo",
-      image:
-        "https://i.ytimg.com/vi/SLB_c_ayRMo/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAqHLXrmXXHVTjWsI9BDYCqAMcpIA",
-    },
-    {
-      title: "Terraform Course - Automate your AWS cloud infrastructure",
-      href: "https://www.youtube.com/watch?v=SLB_c_ayRMo",
-      image:
-        "https://i.ytimg.com/vi/SLB_c_ayRMo/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAqHLXrmXXHVTjWsI9BDYCqAMcpIA",
-    },
-    {
-      title: "Terraform Course - Automate your AWS cloud infrastructure",
-      href: "https://www.youtube.com/watch?v=SLB_c_ayRMo",
-      image:
-        "https://i.ytimg.com/vi/SLB_c_ayRMo/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAqHLXrmXXHVTjWsI9BDYCqAMcpIA",
-    },
-    {
-      title: "Terraform Course - Automate your AWS cloud infrastructure",
-      href: "https://www.youtube.com/watch?v=SLB_c_ayRMo",
-      image:
-        "https://i.ytimg.com/vi/SLB_c_ayRMo/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAqHLXrmXXHVTjWsI9BDYCqAMcpIA",
-    },
-  ];
-
   return (
     <div className="w-full flex flex-wrap gap-5 m-14">
       {dashboardData.map((info, index) => (
@@ -121,7 +83,7 @@ export default function Page() {
           All latest video uploaded{" "}
         </h2>
         <div className="flex flex-wrap  items-center gap-5">
-          {videoData.data.map(
+          {videoData.data?.map(
             (
               info: {
                 name: string;
