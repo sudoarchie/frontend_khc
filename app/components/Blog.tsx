@@ -3,6 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import { PinCard } from "./PinCard";
 import axios from "axios";
 import Loader from "./Loading";
+import { Error } from "./error";
 interface BlogItem {
   id: string;
   title: string;
@@ -22,11 +23,6 @@ export default function BlogComponent() {
         params: { take: 10 },
       });
 
-      // Check for a successful response
-      if (response.status !== 200) {
-        throw new Error("Network response was not ok");
-      }
-
       const result = response.data;
       console.log(result);
       return result.data;
@@ -41,7 +37,7 @@ export default function BlogComponent() {
   }
 
   if (error) {
-    return <div>Error: {error.message}</div>; // Handle error state
+    return <Error></Error>;
   }
   return (
     <div className="flex flex-wrap justify-center gap-y-20 my-20">
