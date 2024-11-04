@@ -5,8 +5,14 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import graphicsLogin from "@/public/8ff238e5b5acb1cf34f2dd1e1e2bcbea.png";
 import Link from "next/link";
 import { Button, TextField } from "@mui/material";
+import { useMutation } from "@tanstack/react-query";
+import axios from "axios";
+import Loader from "../components/Loading";
+import { Error } from "../components/error";
+import { useRouter } from "next/navigation";
 
 export default function Page() {
+  const router = useRouter();
   type Inputs = {
     email: string;
     password: string;
@@ -17,7 +23,27 @@ export default function Page() {
     watch,
     formState: { errors },
   } = useForm<Inputs>();
-  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
+  const mutation = useMutation({
+    mutationFn: async (data: Inputs) => {
+      const response = await axios({
+        url: `${process.env.NEXT_PUBLIC_BASE_URL}/admin/login`,
+        method: "post",
+        data,
+        withCredentials: true,
+      });
+      return response.data;
+    },
+    onSuccess: () => {
+      router.push("/admin/dashboard"); // Redirect on successful login
+    },
+  });
+  const onSubmit: SubmitHandler<Inputs> = (data) => mutation.mutate(data);
+  if (mutation.isPending) {
+    return <Loader></Loader>;
+  }
+  if (mutation.isError) {
+    return <Error></Error>;
+  }
 
   return (
     <div className="max-w-screen-xl mx-auto">
