@@ -6,21 +6,21 @@ interface RowData {
 }
 
 interface TableData {
-  rows: RowData[];
+  rows?: RowData[]; // Make rows optional in case it's undefined
   className?: string;
   deleteOption?: boolean;
 }
 
 const TableField: React.FC<TableData> = ({
-  rows,
+  rows = [], // Default to an empty array if rows is undefined
   deleteOption,
   className = "",
 }) => {
   if (rows.length === 0) {
-    return null;
+    return null; // Return null if rows is empty
   }
 
-  const headers = Object.keys(rows[0]);
+  const headers = Object.keys(rows[0] || {}); // Use empty object if rows[0] is undefined
 
   const isValidUrl = (url: string) => {
     try {
@@ -82,11 +82,9 @@ const TableField: React.FC<TableData> = ({
               ))}
               {deleteOption ? (
                 <td className="p-4">
-                  {" "}
-                  <Link href={""} className="">
-                    {" "}
+                  <Link href="" className="">
                     Delete
-                  </Link>{" "}
+                  </Link>
                 </td>
               ) : undefined}
             </tr>
