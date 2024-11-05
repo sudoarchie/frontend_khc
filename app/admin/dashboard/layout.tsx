@@ -1,12 +1,16 @@
+"use client";
 import { Sidebar } from "@/app/components/SideBar";
 import { Breadcrumb } from "@/app/components/Breadcrumbs";
 import { SectionHeader } from "@/app/components/SectionHeader";
+import { validateAdminToken } from "@/utils/adminLoginValidate";
+import { useRouter } from "next/navigation";
 
 export default function AdminPanelLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const router = useRouter();
   const sidebarData = [
     {
       title: "Management",
@@ -168,6 +172,15 @@ export default function AdminPanelLayout({
       ],
     },
   ];
+  async function checkValidation() {
+    const validatedToken = await validateAdminToken(); // Wait for Validate to complete
+    console.log(validatedToken);
+
+    if (!validatedToken) {
+      router.push("/admin");
+    }
+  }
+  checkValidation();
 
   return (
     <div>
