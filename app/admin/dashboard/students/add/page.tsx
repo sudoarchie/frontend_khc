@@ -14,6 +14,7 @@ import axios from "axios";
 import { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useRouter } from "next/navigation";
+import toast, { Toaster } from "react-hot-toast";
 
 type Inputs = {
   name: string;
@@ -310,7 +311,11 @@ export default function AddStudent() {
       return response;
     },
     onSuccess: () => {
+      toast.success("Student Created Successfully!");
       reset();
+    },
+    onError: () => {
+      toast.error("Error while creating!!");
     },
   });
   const {
@@ -324,6 +329,7 @@ export default function AddStudent() {
 
   return (
     <div className="flex flex-col h-full  justify-center items-center">
+      <Toaster position="top-right" reverseOrder={false} />
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 w-full sm:max-w-[900px] mt-16">
           <TextField
