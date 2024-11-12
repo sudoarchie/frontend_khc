@@ -7,6 +7,8 @@ import {
   PersonIcon,
   HomeIcon,
 } from "@radix-ui/react-icons";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
 
 interface Subject {
   name: string;
@@ -33,21 +35,22 @@ interface UserProfileProps {
   enrollments: Enrollment[];
 }
 
-export default function Component({
-  id = "1",
-  name = "John Doe",
-  email = "johndoe@example.com",
-  mobileNo = "123-456-7890",
-  teacherSubjects = [
-    { subject: { name: "Mathematics" } },
-    { subject: { name: "Physics" } },
-  ],
-  enrollments = [
-    { student: { name: "Alice Johnson" } },
-    { student: { name: "Bob Smith" } },
-  ],
-}: UserProfileProps) {
+export default function Component({ params }: { params: { id: string } }) {
   const [activeTab, setActiveTab] = useState<string>("about");
+  const { data, isLoading, error } = useQuery<UserProfileProps>({
+    queryKey: ["TeacherId", params.id],
+    queryFn: async () => {
+      const response = await axios.get(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/teacher/get`,
+        { params: { id: params.id } }
+      );
+      return response.data.response; // Access the nested response object
+    },
+    enabled: !!params.id, // Ensures query only runs when `id` is defined
+  });
+
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>Error loading profile</div>;
 
   return (
     <div className="min-h-screen bg-gray-100">
