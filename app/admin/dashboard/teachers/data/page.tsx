@@ -1,4 +1,6 @@
 "use client";
+import { Error } from "@/app/components/error";
+import Loader from "@/app/components/Loading";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { useState } from "react";
@@ -40,8 +42,8 @@ export default function Teacher() {
     },
   });
 
-  if (isLoading) return <p>Loading...</p>;
-  if (error) return <p>Error loading data.</p>;
+  if (isLoading) return <Loader></Loader>;
+  if (error) return <Error></Error>;
 
   return (
     <div className="overflow-x-auto mt-5">
