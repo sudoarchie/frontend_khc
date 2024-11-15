@@ -11,7 +11,7 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
 interface TeacherSubject {
-  subject: string;
+  subject: { name: string };
 }
 
 interface Student {
@@ -33,17 +33,22 @@ interface UserProfileProps {
 
 export default function Component({ params }: { params: { id: string } }) {
   const [activeTab, setActiveTab] = useState<string>("about");
+
   const { data, isLoading, error } = useQuery<UserProfileProps>({
     queryKey: ["TeacherId", params.id],
     queryFn: async () => {
-      console.log(`${process.env.NEXT_PUBLIC_BASE_URL}/teacher/get`);
       const response = await axios.get(
         `${process.env.NEXT_PUBLIC_BASE_URL}/teacher/get`,
         { params: { id: params.id }, withCredentials: true }
       );
-      return response.data.response; // Access the nested response object
+      // Convert the `Enrollment` field to lowercase `enrollments` in the response
+      const apiData = response.data.response;
+      return {
+        ...apiData,
+        enrollments: apiData.Enrollment,
+      };
     },
-    enabled: !!params.id, // Ensures query only runs when `id` is defined
+    enabled: !!params.id,
   });
 
   if (isLoading) return <div>Loading...</div>;
@@ -141,6 +146,7 @@ export default function Component({ params }: { params: { id: string } }) {
                     Member since
                   </dt>
                   <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                    {/* Placeholder for member since date */}
                     date
                   </dd>
                 </div>
@@ -164,7 +170,7 @@ export default function Component({ params }: { params: { id: string } }) {
                       key={index}
                       className="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-blue-100 text-blue-800"
                     >
-                      {ts.subject}
+                      {ts.subject.name}
                     </span>
                   ))}
                 </div>
@@ -181,27 +187,18 @@ export default function Component({ params }: { params: { id: string } }) {
               </h3>
             </div>
             <ul className="border-t border-gray-200 divide-y divide-gray-200">
-              {data?.enrollments == undefined ? (
-                <div>No Data found</div>
-              ) : (
-                <div>
-                  {data?.enrollments.map((enrollment, index) => (
-                    <li
-                      key={index}
-                      className="px-4 py-4 sm:px-6 flex items-center"
-                    >
-                      <img
-                        className="h-10 w-10 rounded-full mr-4"
-                        src={`https://api.dicebear.com/6.x/initials/svg?seed=${enrollment.student.name}`}
-                        alt={enrollment.student.name}
-                      />
-                      <span className="text-sm font-medium text-gray-900">
-                        {enrollment.student.name}
-                      </span>
-                    </li>
-                  ))}
-                </div>
-              )}
+              {data?.enrollments?.map((enrollment, index) => (
+                <li key={index} className="px-4 py-4 sm:px-6 flex items-center">
+                  <img
+                    className="h-10 w-10 rounded-full mr-4"
+                    src={`https://api.dicebear.com/6.x/initials/svg?seed=${enrollment.student.name}`}
+                    alt={enrollment.student.name}
+                  />
+                  <span className="text-sm font-medium text-gray-900">
+                    {enrollment.student.name}
+                  </span>
+                </li>
+              ))}
             </ul>
           </div>
         )}
