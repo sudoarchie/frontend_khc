@@ -29,6 +29,7 @@ interface UserProfileProps {
   mobileNo: string;
   teacherSubjects: TeacherSubject[];
   enrollments: Enrollment[];
+  createdAt: string;
 }
 
 export default function Component({ params }: { params: { id: string } }) {
@@ -147,7 +148,7 @@ export default function Component({ params }: { params: { id: string } }) {
                   </dt>
                   <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
                     {/* Placeholder for member since date */}
-                    date
+                    {data?.createdAt}
                   </dd>
                 </div>
               </dl>
