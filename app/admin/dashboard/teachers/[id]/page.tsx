@@ -9,6 +9,8 @@ import {
 } from "@radix-ui/react-icons";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
+import Link from "next/link";
+import { PencilLine } from "lucide-react";
 
 interface TeacherSubject {
   subject: { name: string };
@@ -76,6 +78,12 @@ export default function Component({ params }: { params: { id: string } }) {
                 {data?.name}
               </h1>
             </div>
+            <Link
+              href={""}
+              className="bg-black text-white rounded-md px-5 py-3 flex"
+            >
+              <PencilLine></PencilLine>
+            </Link>
           </div>
         </div>
         <div className="hidden sm:block md:hidden mt-6 min-w-0 flex-1">
