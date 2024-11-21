@@ -2,6 +2,7 @@ import { Banner } from "@/app/components/Banner";
 import { Box } from "@/app/components/Box";
 import { FolderCard } from "@/app/components/FolderCard";
 import img1 from "@/public/worksheetbg.jpeg";
+import Link from "next/link";
 export default function WorksheetAndNotice() {
   const worksheetData = {
     Number: 34,
@@ -13,19 +14,7 @@ export default function WorksheetAndNotice() {
   const data = [
     {
       Name: "Worksheets",
-      SubName: "Students",
-    },
-    {
-      Name: "Worksheets",
-      SubName: "Teachers",
-    },
-    {
-      Name: "Worksheets",
-      SubName: "Teacher to Student",
-    },
-    {
-      Name: "Worksheets",
-      SubName: "Student to Teacher",
+      SubName: "All",
     },
   ];
   return (
@@ -40,11 +29,13 @@ export default function WorksheetAndNotice() {
       <Box Heading="Worksheets" className="w-[95%] m-auto my-5">
         <div className="flex flex-wrap m-5 gap-5">
           {data.map((info, index) => (
-            <FolderCard
-              Name={info.Name}
-              SubName={info.SubName}
-              key={index}
-            ></FolderCard>
+            <Link href={"/admin/dashboard/worksheetandnotices/allassignment"}>
+              <FolderCard
+                Name={info.Name}
+                SubName={info.SubName}
+                key={index}
+              ></FolderCard>
+            </Link>
           ))}
         </div>
       </Box>
