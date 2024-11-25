@@ -1,3 +1,4 @@
+"use client";
 import { CardTwo } from "@/app/components/cardTwo";
 import img1 from "@/public/7.png";
 
@@ -11,9 +12,9 @@ export default function Management() {
         url={"/admin/dashboard/management/subjectmanagement"}
       ></CardTwo>
       <CardTwo
-        title={"Category Management"}
+        title={"Grade Management"}
         image={img2}
-        url={"/admin/dashboard/management/categorymanagement"}
+        url={"/admin/dashboard/management/grademanagement"}
       ></CardTwo>
     </div>
   );
