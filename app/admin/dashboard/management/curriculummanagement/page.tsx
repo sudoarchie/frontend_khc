@@ -30,7 +30,7 @@ export default function MaterialManagement() {
     isLoading,
     error,
   } = useQuery({
-    queryKey: ["curriculum"],
+    queryKey: ["country"],
     queryFn: async () => {
       const response = await axios({
         url: `${process.env.NEXT_PUBLIC_BASE_URL}/country`,
