@@ -111,8 +111,8 @@ export default function AdminPanelLayout({
           ),
         },
         {
-          href: "/admin/dashboard/countrywisesubject",
-          label: "Countrywise Subject",
+          href: "/admin/dashboard/countrywisescurriculum",
+          label: "Countrywise Curriculum",
           icon: (
             <svg
               width="24"
