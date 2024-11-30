@@ -11,6 +11,8 @@ import { useMutation } from "@tanstack/react-query";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useState } from "react";
 import Image from "next/image";
+import Loader from "@/app/components/Loading";
+import toast, { Toaster } from "react-hot-toast";
 
 interface Inputs {
   title: string;
@@ -19,10 +21,48 @@ interface Inputs {
 }
 export default function Add() {
   const [preview, setPreview] = useState();
+  const mutation = useMutation({
+    mutationFn: async (data: Inputs) => {
+      const formData = new FormData();
+      formData.append("title", data.title);
+      formData.append("description", data.description);
+
+      // Append the first file from the FileList
+      if (data.file && data.file.length > 0) {
+        formData.append("file", data.file[0]);
+      }
+
+      const res = await axios({
+        url: `${process.env.NEXT_PUBLIC_BASE_URL}/blog/add`,
+        method: "POST",
+        withCredentials: true,
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+        data: formData,
+      });
+      return res.data;
+    },
+    onError: () => {
+      toast.error("Unable to create blog!");
+    },
+    onSuccess: () => {
+      toast.success("Blog Created Successfully");
+    },
+  });
   const { register, handleSubmit } = useForm<Inputs>();
-  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
+  const onSubmit: SubmitHandler<Inputs> = (data) =>
+    mutation.mutate({
+      title: data.title,
+      description: data.description,
+      file: data.file,
+    });
+  if (mutation.isPending) {
+    return <Loader />;
+  }
   return (
     <div className="w-full">
+      <Toaster></Toaster>
       <Box Heading="Create a new post" className="p-5 flex flex-col gap-5">
         {/* Replaced InputField with MUI TextField */}
         <form onSubmit={handleSubmit(onSubmit)}>
