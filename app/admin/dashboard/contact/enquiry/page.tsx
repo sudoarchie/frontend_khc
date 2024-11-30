@@ -37,8 +37,11 @@ export default function Enquiry() {
           </tr>
         </thead>
         <tbody>
-          {data?.map((item: Data) => (
-            <tr className="border-b border-gray-200 text-center h-16">
+          {data?.map((item: Data, index: number) => (
+            <tr
+              className="border-b border-gray-200 text-center h-16"
+              key={index}
+            >
               <td>{item.email}</td>
               <td>{item.mobileNo}</td>
               <td className="text-wrap">{item.message}</td>

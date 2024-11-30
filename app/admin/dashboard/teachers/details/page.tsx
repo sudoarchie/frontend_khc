@@ -17,7 +17,6 @@ type Inputs = {
   paypalemail: string;
 };
 import { Box } from "@/app/components/Box";
-import { InputField } from "@/app/components/Inputfield";
 import Image from "next/image";
 import dp from "@/public/dp.jpg";
 import { CardOne } from "@/app/components/CardOne";

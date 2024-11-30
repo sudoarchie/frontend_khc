@@ -11,6 +11,7 @@ import {
   InputLabel,
   MenuItem,
   Select,
+  SelectChangeEvent,
 } from "@mui/material";
 import { useEffect, useState } from "react";
 
@@ -30,12 +31,12 @@ export default function AddTeacher() {
 
   const [selectedSubjects, setSelectedSubjects] = useState<string[]>([]);
 
-  const handleSubjectChange = (
-    event: React.ChangeEvent<{ value: unknown }>,
-  ) => {
-    const value = event.target.value as string[];
-    setSelectedSubjects(value);
-    setValue("subjects", value); // Update form value in react-hook-form
+  const handleSubjectChange = (event: SelectChangeEvent<string[]>) => {
+    const value = event.target.value;
+    // Ensure value is always string[] by spreading if it's a string
+    const subjects = typeof value === "string" ? [value] : [...value];
+    setSelectedSubjects(subjects);
+    setValue("subjects", subjects);
   };
 
   return (

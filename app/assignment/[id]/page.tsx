@@ -50,6 +50,8 @@ export default function AssignmentDetails({
           assignmentTitle={data.name}
           pdfUrl={data.url}
           students={data.studentAssignment}
+          description={""}
+          subject={""}
         />
       </div>
     </div>

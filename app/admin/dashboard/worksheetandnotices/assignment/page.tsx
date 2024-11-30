@@ -1,5 +1,5 @@
 import { Box } from "@/app/components/Box";
-import { InputField } from "@/app/components/Inputfield";
+// import { InputField } from "@/app/components/Inputfield";
 import OptionField from "@/app/components/OptionField";
 import { PrimaryButton } from "@/app/components/PrimaryButton";
 import { UploadField } from "@/app/components/UploadField";
@@ -29,12 +29,12 @@ export default function AssignmentAndDocuments() {
           className="mt-5"
         ></OptionField>
 
-        <InputField
+        {/* <InputField
           label={"Enter chapter Name"}
           placeholder={"Chapter 1"}
           type={"text"}
           className="mt-5"
-        ></InputField>
+        ></InputField> */}
 
         <div className="border-dashed border-2 w-full mx-auto  rounded-xl mt-5">
           <UploadField></UploadField>

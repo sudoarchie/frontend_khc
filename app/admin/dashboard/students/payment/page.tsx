@@ -1,6 +1,6 @@
 "use client";
 import { Box } from "@/app/components/Box";
-import { InputField } from "@/app/components/Inputfield";
+// import { InputField } from "@/app/components/Inputfield";
 import { PrimaryButton } from "@/app/components/PrimaryButton";
 import { TextField } from "@mui/material";
 import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
@@ -21,7 +21,7 @@ export default function Payment() {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <Box className="mx-auto w-[90%] h-[500px] border-2 border-borderColor rounded-lg m-10 flex flex-col justify-center items-center">
-        <InputField
+        {/* <InputField
           className="w-[70%]"
           label="Enter amount"
           placeholder={""}
@@ -34,7 +34,7 @@ export default function Payment() {
           placeholder={""}
           type={"date"}
           {...register("date")}
-        ></InputField>
+        ></InputField> */}
 
         <PrimaryButton
           Name={"SAVE NOW"}

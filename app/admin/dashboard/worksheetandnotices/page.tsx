@@ -29,7 +29,10 @@ export default function WorksheetAndNotice() {
       <Box Heading="Worksheets" className="w-[95%] m-auto my-5">
         <div className="flex flex-wrap m-5 gap-5">
           {data.map((info, index) => (
-            <Link href={"/admin/dashboard/worksheetandnotices/allassignment"}>
+            <Link
+              href={"/admin/dashboard/worksheetandnotices/allassignment"}
+              key={index}
+            >
               <FolderCard
                 Name={info.Name}
                 SubName={info.SubName}
