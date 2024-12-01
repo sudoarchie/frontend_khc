@@ -15,11 +15,7 @@ export default function Blog() {
         image={img2}
         url={"/admin/dashboard/blogs/list"}
       ></CardTwo>
-      <CardTwo
-        title={"Edit Blog"}
-        image={img3}
-        url={"/admin/dashboard/blogs/edit"}
-      ></CardTwo>
+
       <CardTwo
         title={"Preview Blog"}
         image={img1}
