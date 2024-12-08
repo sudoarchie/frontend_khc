@@ -38,7 +38,7 @@ export default function Page() {
       );
     },
     onSuccess: () => {
-      router.push("/student");
+      router.push("/teacher/dashboard");
     },
     onError: () => {
       router.push("/");
@@ -64,7 +64,7 @@ export default function Page() {
           <div className="mx-10 mb-5">
             <h1 className="text-2xl">Sign in to your account</h1>
 
-            <form onSubmit={onSubmit} className="mt-10">
+            <form onSubmit={onSubmit} className="mt-20">
               <TextField
                 id="outlined-basic"
                 variant="outlined"
