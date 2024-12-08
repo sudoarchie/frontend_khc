@@ -13,19 +13,24 @@ import { useState } from "react";
 import Image from "next/image";
 import Loader from "@/app/components/Loading";
 import toast, { Toaster } from "react-hot-toast";
-
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 interface Inputs {
   title: string;
   description: string;
+  content: string;
   file: FileList;
 }
 export default function Add() {
   const [preview, setPreview] = useState();
+  const [value, setValue] = useState("");
+
   const mutation = useMutation({
     mutationFn: async (data: Inputs) => {
       const formData = new FormData();
       formData.append("title", data.title);
       formData.append("description", data.description);
+      formData.append("content", data.content);
 
       // Append the first file from the FileList
       if (data.file && data.file.length > 0) {
@@ -55,6 +60,7 @@ export default function Add() {
     mutation.mutate({
       title: data.title,
       description: data.description,
+      content: value,
       file: data.file,
     });
   if (mutation.isPending) {
@@ -74,14 +80,22 @@ export default function Add() {
             className=""
             {...register("title")}
           />
-          <TextField
-            id="outlined-multiline-static"
-            label="Description"
-            multiline
-            rows={4}
-            className="w-full mt-5"
-            {...register("description")}
-          />{" "}
+          <div className="mt-5">
+            <TextField
+              label="Description"
+              placeholder="Blog Description"
+              variant="outlined"
+              fullWidth
+              className=""
+              {...register("description")}
+            />
+          </div>
+          <ReactQuill
+            theme="snow"
+            value={value}
+            onChange={setValue}
+            className="mt-5"
+          />
           <Box Heading="" className="w-full m-auto my-5">
             <h1 className="font-bold text-xl my-5">Cover Image</h1>
             <input

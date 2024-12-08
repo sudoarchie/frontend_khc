@@ -47,7 +47,7 @@ export default function BlogComponent() {
           image={info.url}
           discription={info.description}
           key={index}
-          url={`/blog/${info.id}`}
+          url={`/blogs/${info.id}`}
         ></PinCard>
       ))}
     </div>

@@ -1,12 +1,13 @@
 "use client";
 import Image from "next/image";
-import img from "@/public/download.png";
 import { PrimaryButton } from "../components/PrimaryButton";
 import { PinCard } from "../components/PinCard";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import Loader from "../components/Loading";
 import { Error } from "../components/error";
+import Link from "next/link";
+import SimpleCard from "../components/SimpleCard";
 
 interface BlogData {
   id: string;
@@ -40,29 +41,37 @@ export default function Blogs() {
   return (
     <div className="mt-10">
       {pinBlog.length > 0 && (
-        <div className="w-[90%] h-[400px] mx-auto rounded-xl border-[2px] border-borderColor flex p-10">
+        <div
+          className="w-[90%] h-[500px] mx-auto rounded-xl border-[2px]
+      bg-blue-50  border-borderColor flex p-10 justify-center items-center"
+        >
           <Image
-            src={img}
+            src={pinBlog[0].url}
+            width={400}
+            height={400}
             alt="blog"
-            className="rounded-lg object-cover w-1/2"
+            className="rounded-lg object-cover w-1/2 scale-90 h-[400px]"
           />
-          <div className="w-1/2">
+          <div className="w-1/2 justify-center items-center">
             <h1 className="font-bold text-3xl">{pinBlog[0].title}</h1>
-            <p className="h-[220px] truncate text-wrap text-justify text-gray-700 mt-5">
+            <p className="max-h-[200px] truncate text-wrap text-justify text-gray-700 mt-5">
               {pinBlog[0].description}
             </p>
-            <PrimaryButton Name="Read More" className="mt-2" />
+            <Link href={`/blogs/${pinBlog[0].id}`}>
+              <PrimaryButton Name="Read More" className="mt-5" />
+            </Link>
           </div>
         </div>
       )}
       <div className="flex flex-wrap justify-center gap-y-24 my-20">
         {remainingBlog.map((info, index) => (
-          <PinCard
-            key={index}
+          <SimpleCard
+            key={info.id}
+            id={info.id}
             title={info.title}
-            discription={info.description}
-            image={info.url}
+            description={info.description}
             url={info.url}
+            link={`/blogs/${info.id}`}
           />
         ))}
       </div>
