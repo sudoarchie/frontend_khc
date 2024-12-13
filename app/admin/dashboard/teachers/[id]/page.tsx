@@ -3,10 +3,10 @@
 import { useState } from "react";
 import {
   CalendarIcon,
-  EnvelopeClosedIcon,
-  PersonIcon,
+  PanelTopCloseIcon,
+  PenIcon,
   HomeIcon,
-} from "@radix-ui/react-icons";
+} from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import Link from "next/link";
@@ -124,7 +124,7 @@ export default function Component({ params }: { params: { id: string } }) {
               <dl className="sm:divide-y sm:divide-gray-200">
                 <div className="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                   <dt className="text-sm font-medium text-gray-500 flex items-center">
-                    <PersonIcon className="mr-2 h-4 w-4" />
+                    <PenIcon className="mr-2 h-4 w-4" />
                     Full name
                   </dt>
                   <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
@@ -133,7 +133,7 @@ export default function Component({ params }: { params: { id: string } }) {
                 </div>
                 <div className="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                   <dt className="text-sm font-medium text-gray-500 flex items-center">
-                    <EnvelopeClosedIcon className="mr-2 h-4 w-4" />
+                    <PanelTopCloseIcon className="mr-2 h-4 w-4" />
                     Email address
                   </dt>
                   <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
